@@ -27,5 +27,7 @@ namespace OnlineCinema_BARS_GROUP.Models
         public int Time { get; set; }
         //Жанры фильма
         public List<Category> Categories { get; set; }
+        //список отзывов
+        public List<Comment> Comments { get; set; }
     }
 }
