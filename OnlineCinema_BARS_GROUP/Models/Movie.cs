@@ -23,6 +23,9 @@ namespace OnlineCinema_BARS_GROUP.Models
         public string Img { get; set; }
         //ссылка на видеофайл фильма
         public string Film { get; set; }
-        
+        //длительность фильма в секундах
+        public int Time { get; set; }
+        //Жанры фильма
+        public List<Category> Categories { get; set; }
     }
 }
