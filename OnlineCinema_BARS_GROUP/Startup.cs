@@ -10,6 +10,7 @@ namespace OnlineCinema_BARS_GROUP
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
         }
  
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -18,9 +19,7 @@ namespace OnlineCinema_BARS_GROUP
             {
                 app.UseDeveloperExceptionPage();
             }
- 
-            app.UseRouting();
- 
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/", async context =>
