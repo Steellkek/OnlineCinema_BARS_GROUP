@@ -6,9 +6,13 @@ namespace OnlineCinema_BARS_GROUP.Data.Mocks
 {
     public class MockMovie:IMovie
     {
-        public IEnumerable<Movie> GetAllMovies =>
-            new List<Movie>()
+        private readonly ICategory _category = new MockCategory();
+        public IEnumerable<Movie> GetAllMovies
+        {
+            get
             {
+                return new List<Movie>()
+                {
                     new Movie()
                     {
                         Name = "Гачи",
@@ -17,10 +21,13 @@ namespace OnlineCinema_BARS_GROUP.Data.Mocks
                         FilmScore = 4.5,
                         Img = "https://i.ytimg.com/vi/zg6JsU9s3XE/maxresdefault.jpg",
                         Film = "",
-                        Categories = {new Category(){CategoryName = "Экшн"},new Category(){CategoryName = "Боевик"}},
+                        Categories = {_category.AllCategories.First(),_category.AllCategories.Last()},
                         Time = 500
                     }
-            };
+                };
+            }
+        }
+            
 
         public Movie getObjectMovie(int songId)
         {

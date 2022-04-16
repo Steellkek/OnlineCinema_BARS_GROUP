@@ -9,6 +9,6 @@ namespace OnlineCinema_BARS_GROUP.Models
         //название жанра
         public string CategoryName { get; set; }
         //список фильмов жанра
-        public List<Movie> Movies { get; set; }
+        //public List<Movie> Movies { get; set; }
     }
 }

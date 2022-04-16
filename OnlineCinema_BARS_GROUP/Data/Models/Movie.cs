@@ -26,8 +26,8 @@ namespace OnlineCinema_BARS_GROUP.Models
         //длительность фильма в секундах
         public int Time { get; set; }
         //Жанры фильма
-        public List<Category> Categories { get; set; }
+        public List<Category> Categories = new List<Category>();
         //список отзывов
-        public List<Comment> Comments { get; set; }
+        public List<Comment> Comments = new List<Comment>();
     }
 }

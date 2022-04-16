@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OnlineCinema_BARS_GROUP.Data.Intarfaces;
+using OnlineCinema_BARS_GROUP.Data.Mocks;
 
 namespace OnlineCinema_BARS_GROUP
 {
@@ -10,6 +12,7 @@ namespace OnlineCinema_BARS_GROUP
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IMovie, MockMovie>();
             services.AddMvc();
         }
  
@@ -20,12 +23,14 @@ namespace OnlineCinema_BARS_GROUP
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStatusCodePages();
+            app.UseStaticFiles();
+            //app.UseMvcWithDefaultRoute();
+
+            app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }
