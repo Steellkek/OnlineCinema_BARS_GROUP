@@ -1,8 +1,11 @@
-﻿using OnlineCinema_BARS_GROUP.Models;
+﻿using System.Collections.Generic;
+using OnlineCinema_BARS_GROUP.Models;
 
-namespace OnlineCinema_BARS_GROUP.Data.Intarfaces;
-
-public interface ICategory
+namespace OnlineCinema_BARS_GROUP.Data.Intarfaces
 {
-    IEnumerable<Category> AllCategories { get; }
+    public interface ICategory
+    {
+        IEnumerable<Category> AllCategories { get; }
+    }
 }
+

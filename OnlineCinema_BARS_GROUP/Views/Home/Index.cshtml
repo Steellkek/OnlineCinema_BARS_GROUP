@@ -1,0 +1,16 @@
+﻿@model System.Collections.Generic.IEnumerable<OnlineCinema_BARS_GROUP.Models.Movie>
+
+
+<h2>Все фильмы</h2>
+@{
+    foreach (var movie in Model)
+    {
+        <h2>Название: @movie.Name</h2>
+        <p>Описание фильма: @movie.ShortDesc</p>
+        <p>Жанр фильма :</p>
+        @foreach (var category in movie.Categories)
+        {
+            <p>@category.CategoryName</p>
+        }               
+    }
+}

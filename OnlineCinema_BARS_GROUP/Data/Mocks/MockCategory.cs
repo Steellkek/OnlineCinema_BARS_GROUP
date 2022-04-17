@@ -1,19 +1,22 @@
-﻿using OnlineCinema_BARS_GROUP.Data.Intarfaces;
+﻿using System.Collections.Generic;
+using OnlineCinema_BARS_GROUP.Data.Intarfaces;
 using OnlineCinema_BARS_GROUP.Models;
 
-namespace OnlineCinema_BARS_GROUP.Data.Mocks;
-
-public class MockCategory: ICategory
+namespace OnlineCinema_BARS_GROUP.Data.Mocks
 {
-    public IEnumerable<Category> AllCategories
+    public class MockCategory: ICategory
     {
-        get
+        public IEnumerable<Category> AllCategories
         {
-            return new List<Category>
+            get
             {
-                new Category(){CategoryName = "Экшн"},
-                new Category(){CategoryName = "Боевик"}
-            };
+                return new List<Category>
+                {
+                    new Category(){CategoryName = "Экшн"},
+                    new Category(){CategoryName = "Боевик"}
+                };
+            }
         }
     }
 }
+
