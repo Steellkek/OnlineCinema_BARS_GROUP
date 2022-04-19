@@ -1,16 +1,16 @@
 ﻿@model System.Collections.Generic.IEnumerable<OnlineCinema_BARS_GROUP.Models.Movie>
 
-
+<link href="~/css/styleImg.css" rel="stylesheet" type="text/css"/>
 <h2>Все фильмы</h2>
 @{
     foreach (var movie in Model)
     {
+        <div class="photo" alt="Смотреть фильм"><img src="@movie.Img" alt="movie" class="image" ></div>
         <h2>Название: @movie.Name</h2>
-        <p>Описание фильма: @movie.ShortDesc</p>
-        <p>Жанр фильма :</p>
+        <p>Жанр фильма :
         @foreach (var category in movie.Categories)
         {
-            <p>@category.CategoryName</p>
-        }               
+            @category.CategoryName
+        }    </p>           
     }
 }

@@ -20,7 +20,7 @@ namespace OnlineCinema_BARS_GROUP.Data.Mocks
                         ShortDesc = "Лучший фильм",
                         LongDesc = "Самый лучший фильм",
                         FilmScore = 4.5,
-                        Img = "https://i.ytimg.com/vi/zg6JsU9s3XE/maxresdefault.jpg",
+                        Img = "https://yt3.ggpht.com/ytc/AKedOLRuzumcGW2icbbTjr7I0AJWKFbq7NAiO05fmQK9vg=s900-c-k-c0x00ffffff-no-rj",
                         Film = "",
                         Categories = {_category.AllCategories.First(),_category.AllCategories.Last()},
                         Time = 500
