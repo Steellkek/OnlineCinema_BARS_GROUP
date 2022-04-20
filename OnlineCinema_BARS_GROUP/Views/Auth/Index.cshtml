@@ -1,0 +1,15 @@
+﻿@model System.Collections.Generic.IEnumerable<OnlineCinema_BARS_GROUP.Data.Models.User>
+
+<link href="~/css/styleImg.css" rel="stylesheet" type="text/css"/>
+@{
+    <div class = "center">
+    <h3>Авторизация</h3>
+    <form method="post" action="~/Auth/CheckUser">
+        <label>Введите имя (ник):</label><br />
+        <input type="text" name="userName" /><br />
+        <label>Придумайте пароль:</label><br />
+        <input type="number" name="password" /><br />
+        <input type="submit" class = "btn btn-secondary" value="Отправить" />
+    </form>
+    </div>
+}
