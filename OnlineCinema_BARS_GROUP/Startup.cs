@@ -13,6 +13,7 @@ namespace OnlineCinema_BARS_GROUP
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IMovie, MockMovie>();
+            services.AddTransient<IUser, MockUser>();
             services.AddMvc();
         }
  

@@ -63,3 +63,9 @@
     -webkit-transform: scale(1) translateY(-50%);
     transform: scale(1) translateY(-50%);
 }
+
+
+.center {
+    background-color: #FFDC00;
+    text-align: center;
+}
