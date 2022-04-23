@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 using OnlineCinema_BARS_GROUP.Data.Intarfaces;
 using OnlineCinema_BARS_GROUP.Data.Models;
 using System.Linq;

@@ -8,11 +8,16 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="JavaScriptEngineSwitcher.ChakraCore" Version="3.16.0" />
+      <PackageReference Include="JavaScriptEngineSwitcher.ChakraCore.Native.linux-x64" Version="3.16.0" />
+      <PackageReference Include="JavaScriptEngineSwitcher.ChakraCore.Native.osx-x64" Version="3.16.0" />
+      <PackageReference Include="JavaScriptEngineSwitcher.ChakraCore.Native.win-x64" Version="3.16.0" />
+      <PackageReference Include="JavaScriptEngineSwitcher.ChakraCore.Native.win-x86" Version="3.16.0" />
+      <PackageReference Include="JavaScriptEngineSwitcher.Extensions.MsDependencyInjection" Version="3.3.0" />
       <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+      <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.3" />
+      <PackageReference Include="React.AspNet" Version="5.2.12" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Content Remove="wwwroot\css\bootstrap.min.css" />
-    </ItemGroup>
 
 </Project>
