@@ -14,11 +14,11 @@ namespace OnlineCinema_BARS_GROUP.Controllers
             _user = user;
         }
             
-        public ViewResult Index()
+        /*public ViewResult Index()
         {
             ViewData["Title"] = "Авторизация";
             return View();
-        }
+        }*/
         [HttpPost]
         public IActionResult CheckUser(string userName, string password) {
             var users = _user.GetAllUsers;
