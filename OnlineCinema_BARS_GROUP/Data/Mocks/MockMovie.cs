@@ -16,15 +16,125 @@ namespace OnlineCinema_BARS_GROUP.Data.Mocks
                 {
                     new Movie()
                     {
-                        Name = "Гачи",
+                        Name = "Райан Гослинг",
                         ShortDesc = "Лучший фильм",
                         LongDesc = "Самый лучший фильм",
                         FilmScore = 4.5,
-                        Img = "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b4/b4e271dd79e5800d7d25c6a51586478d4adf3826_full.jpg",
+                        Img = "https://media.globalcitizen.org/thumbnails/ea/c1/eac1a9c0-85e8-4298-b24a-1788aea2eb98/hey-girl-those-ryan-gosling-memes-actually-do-some__1600x900_q85_crop_subsampling-2.jpg",
+                        Film = "",
+                        Categories = {_category.AllCategories.First(),_category.AllCategories.Last()},
+                        Time = 500
+                    },
+                    new Movie()
+                    {
+                        Name = "Райан Гослинг",
+                        ShortDesc = "Лучший фильм",
+                        LongDesc = "Самый лучший фильм",
+                        FilmScore = 4.5,
+                        Img = "https://media.globalcitizen.org/thumbnails/ea/c1/eac1a9c0-85e8-4298-b24a-1788aea2eb98/hey-girl-those-ryan-gosling-memes-actually-do-some__1600x900_q85_crop_subsampling-2.jpg",
+                        Film = "",
+                        Categories = {_category.AllCategories.First(),_category.AllCategories.Last()},
+                        Time = 500
+                    },
+                    new Movie()
+                    {
+                        Name = "Райан Гослинг",
+                        ShortDesc = "Лучший фильм",
+                        LongDesc = "Самый лучший фильм",
+                        FilmScore = 4.5,
+                        Img = "https://media.globalcitizen.org/thumbnails/ea/c1/eac1a9c0-85e8-4298-b24a-1788aea2eb98/hey-girl-those-ryan-gosling-memes-actually-do-some__1600x900_q85_crop_subsampling-2.jpg",
+                        Film = "",
+                        Categories = {_category.AllCategories.First(),_category.AllCategories.Last()},
+                        Time = 500
+                    },
+                    new Movie()
+                    {
+                        Name = "Райан Гослинг",
+                        ShortDesc = "Лучший фильм",
+                        LongDesc = "Самый лучший фильм",
+                        FilmScore = 4.5,
+                        Img = "https://media.globalcitizen.org/thumbnails/ea/c1/eac1a9c0-85e8-4298-b24a-1788aea2eb98/hey-girl-those-ryan-gosling-memes-actually-do-some__1600x900_q85_crop_subsampling-2.jpg",
+                        Film = "",
+                        Categories = {_category.AllCategories.First(),_category.AllCategories.Last()},
+                        Time = 500
+                    },
+                    new Movie()
+                    {
+                        Name = "Райан Гослинг",
+                        ShortDesc = "Лучший фильм",
+                        LongDesc = "Самый лучший фильм",
+                        FilmScore = 4.5,
+                        Img = "https://media.globalcitizen.org/thumbnails/ea/c1/eac1a9c0-85e8-4298-b24a-1788aea2eb98/hey-girl-those-ryan-gosling-memes-actually-do-some__1600x900_q85_crop_subsampling-2.jpg",
+                        Film = "",
+                        Categories = {_category.AllCategories.First(),_category.AllCategories.Last()},
+                        Time = 500
+                    },new Movie()
+                    {
+                        Name = "Райан Гослинг",
+                        ShortDesc = "Лучший фильм",
+                        LongDesc = "Самый лучший фильм",
+                        FilmScore = 4.5,
+                        Img = "https://media.globalcitizen.org/thumbnails/ea/c1/eac1a9c0-85e8-4298-b24a-1788aea2eb98/hey-girl-those-ryan-gosling-memes-actually-do-some__1600x900_q85_crop_subsampling-2.jpg",
+                        Film = "",
+                        Categories = {_category.AllCategories.First(),_category.AllCategories.Last()},
+                        Time = 500
+                    },
+                    new Movie()
+                    {
+                        Name = "Райан Гослинг",
+                        ShortDesc = "Лучший фильм",
+                        LongDesc = "Самый лучший фильм",
+                        FilmScore = 4.5,
+                        Img = "https://media.globalcitizen.org/thumbnails/ea/c1/eac1a9c0-85e8-4298-b24a-1788aea2eb98/hey-girl-those-ryan-gosling-memes-actually-do-some__1600x900_q85_crop_subsampling-2.jpg",
+                        Film = "",
+                        Categories = {_category.AllCategories.First(),_category.AllCategories.Last()},
+                        Time = 500
+                    },
+                    new Movie()
+                    {
+                        Name = "Райан Гослинг",
+                        ShortDesc = "Лучший фильм",
+                        LongDesc = "Самый лучший фильм",
+                        FilmScore = 4.5,
+                        Img = "https://media.globalcitizen.org/thumbnails/ea/c1/eac1a9c0-85e8-4298-b24a-1788aea2eb98/hey-girl-those-ryan-gosling-memes-actually-do-some__1600x900_q85_crop_subsampling-2.jpg",
+                        Film = "",
+                        Categories = {_category.AllCategories.First(),_category.AllCategories.Last()},
+                        Time = 500
+                    },
+                    new Movie()
+                    {
+                        Name = "Райан Гослинг",
+                        ShortDesc = "Лучший фильм",
+                        LongDesc = "Самый лучший фильм",
+                        FilmScore = 4.5,
+                        Img = "https://media.globalcitizen.org/thumbnails/ea/c1/eac1a9c0-85e8-4298-b24a-1788aea2eb98/hey-girl-those-ryan-gosling-memes-actually-do-some__1600x900_q85_crop_subsampling-2.jpg",
+                        Film = "",
+                        Categories = {_category.AllCategories.First(),_category.AllCategories.Last()},
+                        Time = 500
+                    },
+                    new Movie()
+                    {
+                        Name = "Райан Гослинг",
+                        ShortDesc = "Лучший фильм",
+                        LongDesc = "Самый лучший фильм",
+                        FilmScore = 4.5,
+                        Img = "https://media.globalcitizen.org/thumbnails/ea/c1/eac1a9c0-85e8-4298-b24a-1788aea2eb98/hey-girl-those-ryan-gosling-memes-actually-do-some__1600x900_q85_crop_subsampling-2.jpg",
+                        Film = "",
+                        Categories = {_category.AllCategories.First(),_category.AllCategories.Last()},
+                        Time = 500
+                    },
+                    new Movie()
+                    {
+                        Name = "Райан Гослинг",
+                        ShortDesc = "Лучший фильм",
+                        LongDesc = "Самый лучший фильм",
+                        FilmScore = 4.5,
+                        Img = "https://media.globalcitizen.org/thumbnails/ea/c1/eac1a9c0-85e8-4298-b24a-1788aea2eb98/hey-girl-those-ryan-gosling-memes-actually-do-some__1600x900_q85_crop_subsampling-2.jpg",
                         Film = "",
                         Categories = {_category.AllCategories.First(),_category.AllCategories.Last()},
                         Time = 500
                     }
+                    
                 };
             }
         }

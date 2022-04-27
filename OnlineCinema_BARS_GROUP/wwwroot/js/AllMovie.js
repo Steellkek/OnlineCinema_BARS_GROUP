@@ -13,17 +13,17 @@ async function GetMovies() {
 
         movies.forEach((movie) => {
             htmlCatalog += `
-                <li>
-                    <span>${movie.name}</span>
+                
+                <div class="col-lg-3">
                     <div class="photo" alt="Смотреть фильм"><img src="${movie.img}" alt="movie" class="image" ></div>
-                </li>
+                                        <p>${movie.name}</p>
+                </div>
+                
             `;
         });
 
         const html = `
-            <ul>
-                ${htmlCatalog}
-            </ul>
+            <div class="row mt-5 mb-2">${htmlCatalog}</div>
         `;
         
         document.getElementById("movies").innerHTML = html;
