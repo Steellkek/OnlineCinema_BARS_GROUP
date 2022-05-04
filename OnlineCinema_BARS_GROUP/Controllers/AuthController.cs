@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using OnlineCinema_BARS_GROUP.Data.Intarfaces;
 using OnlineCinema_BARS_GROUP.Data.Models;
-using System.Linq;
 
 namespace OnlineCinema_BARS_GROUP.Controllers
 {
@@ -23,14 +21,14 @@ namespace OnlineCinema_BARS_GROUP.Controllers
         public IActionResult CheckUser(string userName, string password) {
             var users = _user.GetAllUsers;
             IEnumerable<User> query = users
-                .Where(x => x.UserName.Equals(userName))
-                .Where(x => x.Password.Equals(password));
+                .Where(x => x.Name.Equals(userName));
+            
             if (query.Count() != 0)
             {
                 return Redirect("~/Home/Index");
             }
-            else
-                return Redirect("~/Auth/Index");
+            
+            return Redirect("~/Auth/Index");
         }
     }
 }

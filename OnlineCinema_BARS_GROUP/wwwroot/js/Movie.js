@@ -7,17 +7,17 @@
         const movie = await response.json();
         console.log(movie)
         let htmlCategory='';
-        movie.categories.forEach((category)=>{
-            htmlCategory+=`${category.categoryName + ' '} `})
+        movie.genres.forEach((genre)=>{
+            htmlCategory+=`${genre.name + ' '} `})
         let htmlMovie='';
         htmlMovie+=`
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6"><img src="${movie.img}" alt="${movie.name}" width=100% height=100%></div>
+                <div class="col-md-6"><img src="${movie.imagePath}" alt="${movie.name}" width=100% height=100%></div>
                 <div class="col-md-4">
                     <div class="grid">
                         <div class="g-col-4"><h3>${movie.name}</h3></div>
-                        <div class="g-col-4"><h5>Описание: ${movie.longDesc}</h5></div>
+                        <div class="g-col-4"><h5>Описание: ${movie.longDescription}</h5></div>
                         <div class="g-col-4"><h4>Жанр:${htmlCategory}</h4></div>
                     </div>
                 </div>

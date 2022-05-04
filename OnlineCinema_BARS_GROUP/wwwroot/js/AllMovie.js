@@ -13,13 +13,13 @@ async function GetMovies() {
         //console.log(movies)
         movies.forEach((movie) => {
             let htmlCategory=''
-            movie.categories.forEach((category)=>{
-                htmlCategory+=`${category.categoryName + ' '} `})
+            movie.genres.forEach((genre)=>{
+                htmlCategory+=`${genre.name + ' '} `})
             htmlCatalog += `
                 
                 <div class="col-3">
-                    <button onclick="GoToMovie()" type="button" class="btn btn-link"><div class="photo"  id="${movie.id}" alt="Смотреть фильм"><img src=${movie.img} alt="movie" class="image"></div></button>
-                    <p>${movie.name}</p>
+                    <button onclick="GoToMovie()" type="button" class="btn btn-link"><div class="photo"  id="${movie.id}" alt="Смотреть фильм"><img src=${movie.imagePath} alt="movie" class="image"></div></button>
+                    <p>${movie.title}</p>
                     <a>${htmlCategory}</a>
                 </div>
                 

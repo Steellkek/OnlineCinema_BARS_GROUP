@@ -1,14 +1,9 @@
-﻿using System.Collections.Generic;
-
-namespace OnlineCinema_BARS_GROUP.Models
+﻿namespace OnlineCinema_BARS_GROUP.Data.Models
 {
     public class Category
     {
-        //Id жанра
-        public int Id { get; set; }
-        //название жанра
-        public string CategoryName { get; set; }
-        //список фильмов жанра
-        //public List<Movie> Movies { get; set; }
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public List<Movie> Movies { get; set; } = new();
     }
 }

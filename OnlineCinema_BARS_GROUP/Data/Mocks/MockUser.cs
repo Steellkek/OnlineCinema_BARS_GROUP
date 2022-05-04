@@ -14,13 +14,11 @@ namespace OnlineCinema_BARS_GROUP.Data.Mocks
                 {
                     new User()
                     {
-                        UserName = "Maksim",
-                        Password = "111",
+                        Name = "Maksim",
                     },
                     new User()
                     {
-                        UserName = "Test",
-                        Password = "111",
+                        Name = "Test",
                     }
                 };
             }
