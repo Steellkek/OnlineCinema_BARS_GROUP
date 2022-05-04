@@ -25,7 +25,7 @@ namespace OnlineCinema_BARS_GROUP
                 app.UseDeveloperExceptionPage();
             }
             app.UseDefaultFiles(new DefaultFilesOptions { DefaultFileNames = new 
-                List<string> { "/html/index.html" } });
+                List<string> { "/index.html" } });
             app.UseStatusCodePages();
             app.UseStaticFiles();
 

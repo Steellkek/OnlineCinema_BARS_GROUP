@@ -17,8 +17,8 @@ async function GetMovies() {
                 htmlCategory+=`${category.categoryName + ' '} `})
             htmlCatalog += `
                 
-                <div class="col-lg-3">
-                    <button onclick="GetMovie()" type="button" class="btn btn-link"><div class="photo"  id="${movie.id}" alt="Смотреть фильм"><img src=${movie.img} alt="movie" class="image"></div></button>
+                <div class="col-3">
+                    <button onclick="GoToMovie()" type="button" class="btn btn-link"><div class="photo"  id="${movie.id}" alt="Смотреть фильм"><img src=${movie.img} alt="movie" class="image"></div></button>
                     <p>${movie.name}</p>
                     <a>${htmlCategory}</a>
                 </div>
@@ -26,12 +26,16 @@ async function GetMovies() {
             `;
         });
 
-        const html = `
-            <div class="container-fluid"><div class="row mt-5 mb-2">${htmlCatalog}</div></div>
+        document.getElementById("movies").innerHTML = `
+            <div class="container"><div class="row row-cols-4">${htmlCatalog}</div></div>
         `;
-        
-        document.getElementById("movies").innerHTML = html;
     }
 }
+
+function GoToMovie(){
+    localStorage["id"]=event.target.id;
+    window.location.href = 'Movie.html';
+}
+
 GetMovies();
 

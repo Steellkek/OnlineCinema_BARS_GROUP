@@ -2,29 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Главная страница</title>
-</head>
-<body>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Список фильмов</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="/css/StyleImg.css" rel="stylesheet" />
+    <link href="/css/StyleImg.css" rel="stylesheet"/>
 </head>
 <body>
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Online cinema BARS Group</a>
+        <a class="navbar-brand" href="index.html">Online cinema BARS Group</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="https://yandex.ru/">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
@@ -40,13 +33,14 @@
         </div>
     </nav>
 </header>
-<h2>Список фильмов</h2>
-<div id="movies"></div>
+<main >
+<h1>Сюда тоже header залезает:(</h1>
+    <div id="movie"></div>
+</main>
 <footer class="container">
     <p class="float-right"><a href="#">Наверх</a></p>
     <p>© 2022 TeamBG, Inc.</p>
 </footer>
-<script src="js/AllMovie.js"></script>
 <script src="js/Movie.js"></script>
 </body>
 </html>
