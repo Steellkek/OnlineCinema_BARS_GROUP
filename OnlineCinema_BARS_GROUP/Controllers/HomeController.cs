@@ -18,18 +18,17 @@ namespace OnlineCinema_BARS_GROUP.Controllers
         {
             _movie = movie;
         }
-        // GET
-        /*public ViewResult Index()
-        {
-            ViewData["Title"] = "Главная страница";
-            var movies = _movie.GetAllMovies;
-            return View(movies);
-        }*/
-
-        //[Route("/GetMovies")]
+        
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Movie>>> Index() {
-            return  _movie.GetAllMovies.ToList();
+        public  Task<ActionResult<IEnumerable<Movie>>> Index() {
+            return   Task.FromResult<ActionResult<IEnumerable<Movie>>>(_movie.GetAllMovies.ToList());
+        }
+        
+        [HttpGet("{id}")]
+        public  Task<ActionResult<Movie>> Get(int id)
+        {
+            Movie movie = _movie.getObjectMovie(id);
+            return Task.FromResult<ActionResult<Movie>>(movie);
         }
     }
 }

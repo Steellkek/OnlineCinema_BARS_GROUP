@@ -6,6 +6,6 @@ namespace OnlineCinema_BARS_GROUP.Data.Intarfaces
     public interface IMovie
     {
         IEnumerable<Movie> GetAllMovies { get;  }//выдаёт все фильмы
-        Movie getObjectMovie(int songId);// вернуть конкректный трек по id
+        Movie getObjectMovie(int movieId);// вернуть конкректный фильм по id
     }
 }
