@@ -6,10 +6,10 @@ namespace OnlineCinema_BARS_GROUP.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class HomeController : Controller
+    public class MovieController : Controller
     {
         private readonly IMovie _movie;
-        public  HomeController(IMovie movie)
+        public  MovieController(IMovie movie)
         {
             _movie = movie;
         }
@@ -20,9 +20,9 @@ namespace OnlineCinema_BARS_GROUP.Controllers
         }
         
         [HttpGet("{id}")]
-        public Task<ActionResult<Movie>> Get(int id)
+        public Task<ActionResult<Movie>> GetById(int id)
         {
-            var movie = _movie.getObjectMovie(id);
+            var movie = _movie.getObjectMovieById(id);
             return Task.FromResult<ActionResult<Movie>>(movie);
         }
     }
