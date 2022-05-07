@@ -13,7 +13,7 @@
         htmlMovie+=`
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-6"><img src="${movie.imagePath}" alt="${movie.name}" width=70% height=70%></div>
+                <div class="col-sm-6"><img src="${movie.imagePath}" alt="${movie.title}" width=70% height=70%></div>
                 <div class="col-md-4">
                     <div class="grid">
                         <div class="g-col-4"><h3>${movie.title}</h3></div>
@@ -30,7 +30,7 @@
         </div>
 
         </div>`;
-
+        document.getElementById("Title").innerHTML = movie.title;
         document.getElementById("movie").innerHTML = htmlMovie;
     }
 }
