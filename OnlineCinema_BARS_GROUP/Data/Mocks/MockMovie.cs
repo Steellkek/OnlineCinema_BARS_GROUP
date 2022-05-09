@@ -25,7 +25,7 @@ namespace OnlineCinema_BARS_GROUP.Data.Mocks
                         ImagePath = "https://i02.fotocdn.net/s112/d5943550cc7427e6/public_pin_l/2528698510.jpg",
                         FilmPath = "",
                         Genres = {_genre.AllGenres.First(), _genre.AllGenres.Last()},
-                        Duration = new TimeSpan(1,48,8)
+                        //Duration = new TimeSpan(1,48,8)
                     };
                     movies.Add(movie);
                 }
@@ -42,7 +42,7 @@ namespace OnlineCinema_BARS_GROUP.Data.Mocks
                                 "hey-girl-those-ryan-gosling-memes-actually-do-some__1600x900_q85_crop_subsampling-2.jpg",
                     FilmPath = "",
                     Genres = {_genre.AllGenres.First(), _genre.AllGenres.Last()},
-                    Duration = new TimeSpan(1,48,8)
+                    //Duration = new TimeSpan(1,48,8)
                 };
                 movies.Add(movie);
                 return movies;

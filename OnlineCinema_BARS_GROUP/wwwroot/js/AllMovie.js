@@ -11,6 +11,7 @@ async function GetMovies() {
     if (response.ok === true) {
         // получаем данные
         const movies = await response.json();
+        console.log(movies)
         let htmlCatalog = '';
         //console.log(movies)
         movies.forEach((movie) => {
@@ -31,6 +32,9 @@ async function GetMovies() {
         document.getElementById("movies").innerHTML = `
             <div class="container"><div class="row row-cols-4">${htmlCatalog}</div></div>
         `;
+    }
+    else{
+        alert("У нас проблемы, попробуйте зайти через пару минут!!!")
     }
 }
 

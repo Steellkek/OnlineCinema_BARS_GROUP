@@ -33,5 +33,8 @@
         document.getElementById("Title").innerHTML = movie.title;
         document.getElementById("movie").innerHTML = htmlMovie;
     }
+    else{
+        alert("У нас проблемы, попробуйте зайти через пару минут!!!")
+    }
 }
 GetMovie();
