@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OnlineCinema_BARS_GROUP.Data;
 using OnlineCinema_BARS_GROUP.Data.Intarfaces;
-using OnlineCinema_BARS_GROUP.Data.Mocks;
+using OnlineCinema_BARS_GROUP.Data.Repository;
 
 namespace OnlineCinema_BARS_GROUP
 {
@@ -23,9 +23,12 @@ namespace OnlineCinema_BARS_GROUP
         {
             var connection = Configuration.GetConnectionString("DefaultConnection");
             
-            services.AddTransient<IMovie, MockMovie>();
-            services.AddTransient<IUser, MockUser>();
+            services.AddTransient<IMovie, MovieRepository>();
             services.AddDbContext<CinemaContext>(options => options.UseNpgsql(connection));
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                );
             services.AddMvc();
         }
  

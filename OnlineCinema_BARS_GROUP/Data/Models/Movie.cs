@@ -1,4 +1,6 @@
-﻿namespace OnlineCinema_BARS_GROUP.Data.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace OnlineCinema_BARS_GROUP.Data.Models;
 
 public class Movie
 {
