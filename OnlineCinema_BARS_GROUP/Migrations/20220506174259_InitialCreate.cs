@@ -20,12 +20,7 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                 type: "text",
                 nullable: false,
                 defaultValue: "");
-
-            migrationBuilder.AddColumn<TimeSpan>(
-                name: "Duration",
-                table: "Movies",
-                type: "interval",
-                nullable: true);
+            
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -33,11 +28,7 @@ namespace OnlineCinema_BARS_GROUP.Migrations
             migrationBuilder.DropColumn(
                 name: "Password",
                 table: "Users");
-
-            migrationBuilder.DropColumn(
-                name: "Duration",
-                table: "Movies");
-
+            
             migrationBuilder.RenameColumn(
                 name: "UserName",
                 table: "Users",
