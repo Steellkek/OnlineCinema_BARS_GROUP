@@ -35,7 +35,7 @@ namespace OnlineCinema_BARS_GROUP.Controllers
                 Console.WriteLine(token);
                 return Ok(token);
             }
-            return BadRequest("Пользователь не найден или пароль введен неверно");
+            return BadRequest("Неверно введен никнейм и/или пароль");
         }
 
         private string Generate(User user)

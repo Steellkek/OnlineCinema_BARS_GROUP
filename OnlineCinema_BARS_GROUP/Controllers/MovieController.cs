@@ -6,7 +6,6 @@ using OnlineCinema_BARS_GROUP.Data.Models;
 namespace OnlineCinema_BARS_GROUP.Controllers
 {
     [ApiController]
-    
     [Route("api/[controller]")]
     public class MovieController : Controller
     {

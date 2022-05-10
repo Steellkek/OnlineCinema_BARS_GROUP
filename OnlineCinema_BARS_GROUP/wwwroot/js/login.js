@@ -1,20 +1,27 @@
-﻿// Добавление пользователя
-async function Login(userName, password) {
-
-    const response = await fetch("api/login", {
-        method: "POST",
-        headers: { "Accept": "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify({
-            UserName: userName,
-            Password: password
-        })
-    });
-}
-// отправка формы
-document.forms["userForm"].addEventListener("submit", e => {
+﻿document.forms["userForm"].addEventListener("submit", e => {
     e.preventDefault();
     const form = document.forms["userForm"];
-    const name = form.elements["name"].value;
+    const username = form.elements["username"].value;
     const password = form.elements["password"].value;
-    Login(name, password);
+    Login(username, password);
 });
+
+async function Login(username, password) {
+    let user = {
+        username: username,
+        password: password
+    };
+
+    let response = await fetch('https://localhost:7019/api/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(user)
+    });
+    const result = await response.text();
+    if (result.length < 60) 
+        alert(result);
+    else
+        location.href = '/api/movie'
+}

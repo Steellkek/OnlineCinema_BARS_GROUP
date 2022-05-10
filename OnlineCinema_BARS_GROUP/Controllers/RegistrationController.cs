@@ -26,7 +26,7 @@ namespace OnlineCinema_BARS_GROUP.Controllers
                 _context.Users.Add(user);
                 await _context.SaveChangesAsync();
             }
-            else return BadRequest("Пользователь с таким UserName уже существует");
+            else return BadRequest("User already exist");
             return Ok(await _context.Users.ToListAsync());
         }
 

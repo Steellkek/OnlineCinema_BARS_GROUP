@@ -1,25 +1,31 @@
-﻿// Добавление пользователя
-async function CreateUser(userName, surname, password) {
-
-    const response = await fetch("api/registration", {
-        method: "POST",
-        headers: { "Accept": "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify({
-            UserName: userName,
-            SurName: surname,
-            Password: password
-        })
-    });
-    alert(await response.json());
-}
-// отправка формы
-document.forms["userForm"].addEventListener("submit", e => {
+﻿document.forms["userForm"].addEventListener("submit", e => {
     e.preventDefault();
     const form = document.forms["userForm"];
-    const name = form.elements["name"].value;
+    const username = form.elements["username"].value;
     const surname = form.elements["surname"].value;
     const password = form.elements["password"].value;
-    test(); 
-    CreateUser(name, surname, password);
+    addUser(username, surname, password);
 });
 
+async function addUser(username, surname, password) {
+    let user = {
+        username: username,
+        surname: surname,
+        password: password
+    };
+
+    let response = await fetch('https://localhost:7019/api/registration', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(user)
+    });
+
+    try {
+        await response.json();
+        location.href = 'login.html'
+    } catch (err) {
+        alert('Пользователь с таким именем уже существует');
+    }
+}
