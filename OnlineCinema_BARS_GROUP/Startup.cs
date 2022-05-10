@@ -45,6 +45,10 @@ namespace OnlineCinema_BARS_GROUP
                 });
 
             services.AddMvc();
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
         }
  
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
