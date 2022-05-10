@@ -26,8 +26,6 @@ namespace OnlineCinema_BARS_GROUP.Controllers
                 _context.Users.Add(user);
                 await _context.SaveChangesAsync();
             }
-<<<<<<< Updated upstream
-=======
             else return BadRequest("Пользователь с таким UserName уже существует");
             return Ok(await _context.Users.ToListAsync());
         }
@@ -35,7 +33,6 @@ namespace OnlineCinema_BARS_GROUP.Controllers
         [HttpGet]
         public async Task<ActionResult<List<User>>> GetUsers()
         {
->>>>>>> Stashed changes
             return Ok(await _context.Users.ToListAsync());
         }
 

@@ -19,6 +19,7 @@ document.forms["userForm"].addEventListener("submit", e => {
     const name = form.elements["name"].value;
     const surname = form.elements["surname"].value;
     const password = form.elements["password"].value;
+    test(); 
     CreateUser(name, surname, password);
-    location.href = 'login.html';
 });
+

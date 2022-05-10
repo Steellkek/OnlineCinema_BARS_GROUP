@@ -32,16 +32,10 @@ namespace OnlineCinema_BARS_GROUP.Controllers
             if (user != null)
             {
                 var token = Generate(user);
-<<<<<<< Updated upstream
-                return Ok(token);
-            }
-            return NotFound("User not found");
-=======
                 Console.WriteLine(token);
                 return Ok(token);
             }
             return BadRequest("Пользователь не найден или пароль введен неверно");
->>>>>>> Stashed changes
         }
 
         private string Generate(User user)
