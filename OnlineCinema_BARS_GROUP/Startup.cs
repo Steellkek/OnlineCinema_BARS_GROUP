@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using OnlineCinema_BARS_GROUP.Data;
 using OnlineCinema_BARS_GROUP.Data.Intarfaces;
+using OnlineCinema_BARS_GROUP.Data.Models;
 using OnlineCinema_BARS_GROUP.Data.Repository;
 
 namespace OnlineCinema_BARS_GROUP
@@ -27,6 +28,7 @@ namespace OnlineCinema_BARS_GROUP
             var connection = Configuration.GetConnectionString("DefaultConnection");
             
             services.AddTransient<IMovie, MovieRepository>();
+            services.AddTransient<IReview, ReviewRepository>();
             services.AddDbContext<CinemaContext>(options => options.UseNpgsql(connection));
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

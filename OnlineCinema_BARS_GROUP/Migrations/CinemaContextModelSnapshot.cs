@@ -105,10 +105,7 @@ namespace OnlineCinema_BARS_GROUP.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<Guid>("AuthorId")
-                        .HasColumnType("uuid");
-
-                    b.Property<int>("AuthorId1")
+                    b.Property<int>("AuthorId")
                         .HasColumnType("integer");
 
                     b.Property<int>("Dislikes")
@@ -132,7 +129,7 @@ namespace OnlineCinema_BARS_GROUP.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AuthorId1");
+                    b.HasIndex("AuthorId");
 
                     b.HasIndex("ParentId1");
 
@@ -220,10 +217,7 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("AuthorId")
-                        .HasColumnType("uuid");
-
-                    b.Property<int>("AuthorId1")
+                    b.Property<int>("AuthorId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Name")
@@ -232,7 +226,7 @@ namespace OnlineCinema_BARS_GROUP.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AuthorId1");
+                    b.HasIndex("AuthorId");
 
                     b.ToTable("Playlists");
                 });
@@ -243,10 +237,7 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("AuthorId")
-                        .HasColumnType("uuid");
-
-                    b.Property<int>("AuthorId1")
+                    b.Property<int>("AuthorId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Comment")
@@ -259,17 +250,14 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                     b.Property<int>("Likes")
                         .HasColumnType("integer");
 
-                    b.Property<Guid>("MovieId")
-                        .HasColumnType("uuid");
-
-                    b.Property<int>("MovieId1")
+                    b.Property<int>("MovieId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AuthorId1");
+                    b.HasIndex("AuthorId");
 
-                    b.HasIndex("MovieId1");
+                    b.HasIndex("MovieId");
 
                     b.ToTable("Reviews");
                 });
@@ -378,7 +366,7 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                 {
                     b.HasOne("OnlineCinema_BARS_GROUP.Data.Models.User", "Author")
                         .WithMany()
-                        .HasForeignKey("AuthorId1")
+                        .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -429,7 +417,7 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                 {
                     b.HasOne("OnlineCinema_BARS_GROUP.Data.Models.User", "Author")
                         .WithMany()
-                        .HasForeignKey("AuthorId1")
+                        .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -440,13 +428,13 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                 {
                     b.HasOne("OnlineCinema_BARS_GROUP.Data.Models.User", "Author")
                         .WithMany("Reviews")
-                        .HasForeignKey("AuthorId1")
+                        .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("OnlineCinema_BARS_GROUP.Data.Models.Movie", "Movie")
                         .WithMany("Reviews")
-                        .HasForeignKey("MovieId1")
+                        .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -25,6 +25,8 @@ public class MovieRepository:IMovie
     }
     public Movie getObjectMovieById(int movieId)
     {
-        return _context.Movies.Include(u => u.Category).Include(x => x.Genres).FirstOrDefault(x=>x.Id==movieId)!;
+        return _context.Movies
+            .Include(u => u.Category)
+            .Include(x => x.Genres).FirstOrDefault(x=>x.Id==movieId)!;
     }
 }

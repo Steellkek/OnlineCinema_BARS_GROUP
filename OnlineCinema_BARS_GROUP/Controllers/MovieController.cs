@@ -11,7 +11,7 @@ namespace OnlineCinema_BARS_GROUP.Controllers
     public class MovieController : Controller
     {
         private readonly IMovie _movie;
-        public  MovieController(IMovie movie)
+        public  MovieController(IMovie movie, CinemaContext context)
         {
             _movie = movie;
         }

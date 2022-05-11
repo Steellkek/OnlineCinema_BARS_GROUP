@@ -7,7 +7,7 @@
         public string Text { get; set; }
         public int Likes { get; set; }
         public int Dislikes { get; set; }
-        public Guid AuthorId { get; set; }
+        public int AuthorId { get; set; }
         public User Author { get; set; }
         public Guid? ParentId { get; set; }
         public Comment? Parent { get; set; }

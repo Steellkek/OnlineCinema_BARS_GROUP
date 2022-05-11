@@ -24,7 +24,6 @@
             </div>    
             <div class="row">
                 <div class="col"></div>
-                <div class="col-md-6"><iframe width=100% height="400px" src="https://www.youtube.com/embed/3FQVINAen3U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
                 <div class="col"></div>
             </div>
         </div>
