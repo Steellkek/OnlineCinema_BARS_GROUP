@@ -17,7 +17,10 @@ public class MovieRepository:IMovie
     {
         get
         {
-            return _context.Movies.Include(u => u.Category).Include(x => x.Genres).ToList();
+            return _context.Movies
+                .Include(u => u.Category)
+                .Include(x => x.Genres)
+                .ToList();
         }
     }
     public Movie getObjectMovieById(int movieId)

@@ -47,3 +47,4 @@ function GoToMovie(){
 
 GetMovies();
 
+console.log(localStorage.user)

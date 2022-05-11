@@ -3,6 +3,7 @@
     const form = document.forms["userForm"];
     const username = form.elements["username"].value;
     const password = form.elements["password"].value;
+    localStorage["user"]= username;
     Login(username, password);
 });
 

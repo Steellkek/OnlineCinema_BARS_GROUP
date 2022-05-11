@@ -1,0 +1,1 @@
+document.getElementById("comment-add").onclick= function ()

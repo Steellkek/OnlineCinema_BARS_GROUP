@@ -7,7 +7,8 @@ public class Review
     public User Author { get; set; }
     public Guid MovieId { get; set; }
     public Movie Movie { get; set; }
-    public List<Comment> Comments { get; set; } = new();
+    public string Comment { get; set; }
+    //public List<Comment> Comments { get; set; } = new();
     public int Likes { get; set; }
     public int Dislikes { get; set; }
 }

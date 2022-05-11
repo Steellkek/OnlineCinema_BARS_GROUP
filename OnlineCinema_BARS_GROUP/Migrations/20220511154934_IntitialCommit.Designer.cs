@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using OnlineCinema_BARS_GROUP.Data;
@@ -11,9 +12,10 @@ using OnlineCinema_BARS_GROUP.Data;
 namespace OnlineCinema_BARS_GROUP.Migrations
 {
     [DbContext(typeof(CinemaContext))]
-    partial class CinemaContextModelSnapshot : ModelSnapshot
+    [Migration("20220511154934_IntitialCommit")]
+    partial class IntitialCommit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -439,13 +441,13 @@ namespace OnlineCinema_BARS_GROUP.Migrations
             modelBuilder.Entity("OnlineCinema_BARS_GROUP.Data.Models.Review", b =>
                 {
                     b.HasOne("OnlineCinema_BARS_GROUP.Data.Models.User", "Author")
-                        .WithMany("Reviews")
+                        .WithMany()
                         .HasForeignKey("AuthorId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("OnlineCinema_BARS_GROUP.Data.Models.Movie", "Movie")
-                        .WithMany("Reviews")
+                        .WithMany()
                         .HasForeignKey("MovieId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -485,11 +487,6 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                     b.Navigation("Children");
                 });
 
-            modelBuilder.Entity("OnlineCinema_BARS_GROUP.Data.Models.Movie", b =>
-                {
-                    b.Navigation("Reviews");
-                });
-
             modelBuilder.Entity("OnlineCinema_BARS_GROUP.Data.Models.Room", b =>
                 {
                     b.Navigation("Genres");
@@ -498,8 +495,6 @@ namespace OnlineCinema_BARS_GROUP.Migrations
             modelBuilder.Entity("OnlineCinema_BARS_GROUP.Data.Models.User", b =>
                 {
                     b.Navigation("Movies");
-
-                    b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618
         }
