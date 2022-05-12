@@ -29,6 +29,7 @@ namespace OnlineCinema_BARS_GROUP
             
             services.AddTransient<IMovie, MovieRepository>();
             services.AddTransient<IReview, ReviewRepository>();
+            services.AddTransient<IUser, UserRepository>();
             services.AddDbContext<CinemaContext>(options => options.UseNpgsql(connection));
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

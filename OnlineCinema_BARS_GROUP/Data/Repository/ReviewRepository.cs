@@ -6,7 +6,7 @@ namespace OnlineCinema_BARS_GROUP.Data.Repository;
 
 public class ReviewRepository:IReview
 {
-    private readonly CinemaContext _context;
+    private  readonly CinemaContext _context;
 
     public ReviewRepository(CinemaContext context)
     {
@@ -19,6 +19,7 @@ public class ReviewRepository:IReview
 
     public void Post(Review review)
     {
-        
+        _context.Reviews.Add(review);
+        _context.SaveChanges();
     }
 }

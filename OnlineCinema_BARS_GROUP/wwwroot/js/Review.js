@@ -1,19 +1,18 @@
 document.getElementById("review-add").onclick= async function () {
     event.preventDefault();
     let review = document.getElementById("review-body").value;
-    let userId;
-    console.log(localStorage.user);
-    const response = await fetch("/api/User/" + localStorage.user, {
-        method: "GET",
-        headers: {"Accept": "application/json"}
-    });
-    if (response.ok===true){
-        const user= await response.json();
-        userId=user.id;
-        console.log(userId)
-    }
-
-    if(review!="") {
+    if(review!=="") {
+        let userId;
+        console.log(localStorage.user);
+        const response = await fetch("/api/User/" + localStorage.user, {
+            method: "GET",
+            headers: {"Accept": "application/json"}
+        });
+        if (response.ok===true){
+            const user= await response.json();
+            userId=user.id;
+            console.log(userId)
+        }
         let Review = {
             id: uuidv4(),
             authorId: parseInt(userId),
@@ -23,17 +22,18 @@ document.getElementById("review-add").onclick= async function () {
             movieId: parseInt(localStorage.id)
         }
         console.log(Review)
-        let response = await fetch('api/Review', {
+        let response1 = await fetch('api/Review', {
             method: 'POST',
             headers: {"Content-Type": "application/json" },
             body: JSON.stringify(Review)
         });
-        if (response.ok === true) {
-            console.log(5)
+        if (response1.ok === true) {
+            document.getElementById("review-body").value="";
+            GetComments();
         }
     }
     else{
-        alert("Вы не ввели сообщение!!")
+        alert("Вы не ввели отзыв!!")
     }
     
 
