@@ -16,4 +16,9 @@ public class ReviewRepository:IReview
     {
         return _context.Reviews.Where(u=>u.MovieId==movieId).Include(u=>u.Author).ToList();
     }
+
+    public void Post(Review review)
+    {
+        
+    }
 }
