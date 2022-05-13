@@ -1,4 +1,6 @@
-﻿document.forms["userForm"].addEventListener("submit", e => {
+﻿var tokenKey = "accessToken"
+
+document.forms["userForm"].addEventListener("submit", e => {
     e.preventDefault();
     const form = document.forms["userForm"];
     const username = form.elements["username"].value;
@@ -20,8 +22,10 @@ async function Login(username, password) {
         body: JSON.stringify(user)
     });
     const result = await response.text();
-    if (result.length < 60) 
+    if (result.length < 60)
         alert(result);
-    else
-        location.href = '/api/movie'
+    else {
+        sessionStorage.setItem(tokenKey, result)
+        location.href = 'index.html'
+    }
 }

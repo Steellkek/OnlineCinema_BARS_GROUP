@@ -20,7 +20,6 @@ namespace OnlineCinema_BARS_GROUP.Controllers
         public async Task<ActionResult<List<User>>> Registration(User user)
         {
             User userReg = checkReg(user);
-            Console.WriteLine(userReg);
             if (userReg == null)
             {
                 _context.Users.Add(user);

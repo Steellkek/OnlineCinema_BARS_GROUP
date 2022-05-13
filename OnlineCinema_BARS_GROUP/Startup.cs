@@ -30,7 +30,7 @@ namespace OnlineCinema_BARS_GROUP
             services.AddTransient<IUser, MockUser>();
             services.AddDbContext<CinemaContext>(options => options.UseNpgsql(connection));
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            services.AddAuthentication(options => { options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;})
                 .AddJwtBearer(options => {
                     options.TokenValidationParameters = new TokenValidationParameters
                     {

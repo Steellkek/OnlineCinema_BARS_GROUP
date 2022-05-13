@@ -1,7 +1,10 @@
 ﻿async function GetMovie() {
     const response = await fetch("/api/Movie/" + localStorage.id, {
         method: "GET",
-        headers: { "Accept": "application/json" }
+        headers: {
+            "Authorization": "Bearer " + sessionStorage.getItem("accessToken"),
+            "Accept": "application/json",
+        }
     });
     if (response.ok === true) {
         const movie = await response.json();
