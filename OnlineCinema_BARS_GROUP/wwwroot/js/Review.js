@@ -19,7 +19,8 @@ document.getElementById("review-add").onclick= async function () {
             comment: review.toString(),
             dislikes: 0,
             likes: 0,
-            movieId: parseInt(localStorage.id)
+            movieId: parseInt(localStorage.id),
+            time: Math.floor(Date.now() / 1000)
         }
         console.log(Review)
         let response1 = await fetch('api/Review', {
@@ -54,8 +55,9 @@ async function GetComments() {
         console.log(reviews);
         let htmlReviews='';
         reviews.forEach((review)=>{
-            htmlReviews+=`<p class="alert alert-primary">${review.author.userName}</p>`
-            htmlReviews+=`<p class="alert alert-success">${review.comment}</p>`
+            htmlReviews += `<p class="text-right small"><em>${timeConverter(review.time)}</em></p>`;
+            htmlReviews+=`<p class="alert alert-primary">Пользователь: ${review.author.userName}</p>`
+            htmlReviews+=`<p class="alert alert-success">Отзыв: ${review.comment}</p>`
         })
         document.getElementById("reviews").innerHTML=htmlReviews;
     }
@@ -66,6 +68,19 @@ function uuidv4() {
         var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
     });
+}
+
+function timeConverter(UNIX_timestamp){
+    var a = new Date(UNIX_timestamp * 1000);
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    var hour = a.getHours();
+    var min = a.getMinutes();
+    var sec = a.getSeconds();
+    var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+    return time;
 }
 
 GetComments();
