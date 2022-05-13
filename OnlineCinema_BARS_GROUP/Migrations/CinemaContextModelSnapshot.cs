@@ -105,10 +105,7 @@ namespace OnlineCinema_BARS_GROUP.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<Guid>("AuthorId")
-                        .HasColumnType("uuid");
-
-                    b.Property<int>("AuthorId1")
+                    b.Property<int>("AuthorId")
                         .HasColumnType("integer");
 
                     b.Property<int>("Dislikes")
@@ -132,7 +129,7 @@ namespace OnlineCinema_BARS_GROUP.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AuthorId1");
+                    b.HasIndex("AuthorId");
 
                     b.HasIndex("ParentId1");
 
@@ -220,10 +217,7 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("AuthorId")
-                        .HasColumnType("uuid");
-
-                    b.Property<int>("AuthorId1")
+                    b.Property<int>("AuthorId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Name")
@@ -232,7 +226,7 @@ namespace OnlineCinema_BARS_GROUP.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AuthorId1");
+                    b.HasIndex("AuthorId");
 
                     b.ToTable("Playlists");
                 });
@@ -243,11 +237,12 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("AuthorId")
-                        .HasColumnType("uuid");
-
-                    b.Property<int>("AuthorId1")
+                    b.Property<int>("AuthorId")
                         .HasColumnType("integer");
+
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<int>("Dislikes")
                         .HasColumnType("integer");
@@ -255,17 +250,14 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                     b.Property<int>("Likes")
                         .HasColumnType("integer");
 
-                    b.Property<Guid>("MovieId")
-                        .HasColumnType("uuid");
-
-                    b.Property<int>("MovieId1")
+                    b.Property<int>("MovieId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AuthorId1");
+                    b.HasIndex("AuthorId");
 
-                    b.HasIndex("MovieId1");
+                    b.HasIndex("MovieId");
 
                     b.ToTable("Reviews");
                 });
@@ -374,7 +366,7 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                 {
                     b.HasOne("OnlineCinema_BARS_GROUP.Data.Models.User", "Author")
                         .WithMany()
-                        .HasForeignKey("AuthorId1")
+                        .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -383,7 +375,7 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                         .HasForeignKey("ParentId1");
 
                     b.HasOne("OnlineCinema_BARS_GROUP.Data.Models.Review", "Review")
-                        .WithMany("Comments")
+                        .WithMany()
                         .HasForeignKey("ReviewId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -425,7 +417,7 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                 {
                     b.HasOne("OnlineCinema_BARS_GROUP.Data.Models.User", "Author")
                         .WithMany()
-                        .HasForeignKey("AuthorId1")
+                        .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -435,14 +427,14 @@ namespace OnlineCinema_BARS_GROUP.Migrations
             modelBuilder.Entity("OnlineCinema_BARS_GROUP.Data.Models.Review", b =>
                 {
                     b.HasOne("OnlineCinema_BARS_GROUP.Data.Models.User", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId1")
+                        .WithMany("Reviews")
+                        .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("OnlineCinema_BARS_GROUP.Data.Models.Movie", "Movie")
-                        .WithMany()
-                        .HasForeignKey("MovieId1")
+                        .WithMany("Reviews")
+                        .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -481,9 +473,9 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                     b.Navigation("Children");
                 });
 
-            modelBuilder.Entity("OnlineCinema_BARS_GROUP.Data.Models.Review", b =>
+            modelBuilder.Entity("OnlineCinema_BARS_GROUP.Data.Models.Movie", b =>
                 {
-                    b.Navigation("Comments");
+                    b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("OnlineCinema_BARS_GROUP.Data.Models.Room", b =>
@@ -494,6 +486,8 @@ namespace OnlineCinema_BARS_GROUP.Migrations
             modelBuilder.Entity("OnlineCinema_BARS_GROUP.Data.Models.User", b =>
                 {
                     b.Navigation("Movies");
+
+                    b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618
         }

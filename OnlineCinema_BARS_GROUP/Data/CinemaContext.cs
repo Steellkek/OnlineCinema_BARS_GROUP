@@ -6,7 +6,7 @@ namespace OnlineCinema_BARS_GROUP.Data;
 public class CinemaContext : DbContext
 {
     public DbSet<AgeRestriction> AgeRestrictions { get; set; }
-    public DbSet<Category> Categories { get; set; }
+    public DbSet<Category?> Categories { get; set; }
     public DbSet<Comment> Comments { get; set; }
     public DbSet<Genre> Genres { get; set; }
     public DbSet<Movie> Movies { get; set; }
@@ -37,9 +37,13 @@ public class CinemaContext : DbContext
             .HasOne(x => x.Parent)
             .WithMany(x => x.Children);
         
-        modelBuilder.Entity<Comment>()
+        /*modelBuilder.Entity<Comment>()
             .HasOne(x => x.Review)
-            .WithMany(x => x.Comments);
+            .WithMany(x => x.Comments);*/
+
+        modelBuilder.Entity<User>()
+            .HasMany(x => x.Reviews)
+            .WithOne(x => x.Author);
 
         modelBuilder.Entity<Movie>()
             .HasMany(x => x.Genres)
@@ -48,8 +52,11 @@ public class CinemaContext : DbContext
         modelBuilder.Entity<Movie>()
             .HasOne(x => x.Category)
             .WithMany(x => x.Movies);
-            
-        
+
+        modelBuilder.Entity<Movie>()
+            .HasMany(x => x.Reviews)
+            .WithOne(x => x.Movie);
+
         modelBuilder.Entity<Movie>()
             .HasOne(x => x.AgeRestriction)
             .WithMany(x => x.Movies);

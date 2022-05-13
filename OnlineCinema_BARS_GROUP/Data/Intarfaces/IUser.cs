@@ -5,6 +5,7 @@ namespace OnlineCinema_BARS_GROUP.Data.Intarfaces
 {
     public interface IUser
     {
-        IEnumerable<User> GetAllUsers { get; }//выдаёт все фильмы
+        //IEnumerable<User> GetAllUsers { get; }//выдаёт все фильмы
+        User GetUser(string title);
     }
 }

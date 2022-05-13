@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace OnlineCinema_BARS_GROUP.Migrations
 {
-    public partial class Initial : Migration
+    public partial class newIntial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -52,8 +52,9 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    Surname = table.Column<string>(type: "text", nullable: false)
+                    UserName = table.Column<string>(type: "text", nullable: false),
+                    Surname = table.Column<string>(type: "text", nullable: false),
+                    Password = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -92,6 +93,7 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                     Rating = table.Column<double>(type: "double precision", nullable: false),
                     ImagePath = table.Column<string>(type: "text", nullable: true),
                     FilmPath = table.Column<string>(type: "text", nullable: true),
+                    Duration = table.Column<TimeSpan>(type: "interval", nullable: true),
                     Views = table.Column<int>(type: "integer", nullable: false),
                     UserId = table.Column<int>(type: "integer", nullable: true)
                 },
@@ -121,15 +123,14 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
-                    AuthorId = table.Column<Guid>(type: "uuid", nullable: false),
-                    AuthorId1 = table.Column<int>(type: "integer", nullable: false)
+                    AuthorId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Playlists", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Playlists_Users_AuthorId1",
-                        column: x => x.AuthorId1,
+                        name: "FK_Playlists_Users_AuthorId",
+                        column: x => x.AuthorId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -212,10 +213,9 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    AuthorId = table.Column<Guid>(type: "uuid", nullable: false),
-                    AuthorId1 = table.Column<int>(type: "integer", nullable: false),
-                    MovieId = table.Column<Guid>(type: "uuid", nullable: false),
-                    MovieId1 = table.Column<int>(type: "integer", nullable: false),
+                    AuthorId = table.Column<int>(type: "integer", nullable: false),
+                    MovieId = table.Column<int>(type: "integer", nullable: false),
+                    Comment = table.Column<string>(type: "text", nullable: false),
                     Likes = table.Column<int>(type: "integer", nullable: false),
                     Dislikes = table.Column<int>(type: "integer", nullable: false)
                 },
@@ -223,14 +223,14 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                 {
                     table.PrimaryKey("PK_Reviews", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Reviews_Movies_MovieId1",
-                        column: x => x.MovieId1,
+                        name: "FK_Reviews_Movies_MovieId",
+                        column: x => x.MovieId,
                         principalTable: "Movies",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Reviews_Users_AuthorId1",
-                        column: x => x.AuthorId1,
+                        name: "FK_Reviews_Users_AuthorId",
+                        column: x => x.AuthorId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -269,8 +269,7 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                     Text = table.Column<string>(type: "text", nullable: false),
                     Likes = table.Column<int>(type: "integer", nullable: false),
                     Dislikes = table.Column<int>(type: "integer", nullable: false),
-                    AuthorId = table.Column<Guid>(type: "uuid", nullable: false),
-                    AuthorId1 = table.Column<int>(type: "integer", nullable: false),
+                    AuthorId = table.Column<int>(type: "integer", nullable: false),
                     ParentId = table.Column<Guid>(type: "uuid", nullable: true),
                     ParentId1 = table.Column<int>(type: "integer", nullable: true),
                     ReviewId = table.Column<Guid>(type: "uuid", nullable: false)
@@ -290,17 +289,17 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Comments_Users_AuthorId1",
-                        column: x => x.AuthorId1,
+                        name: "FK_Comments_Users_AuthorId",
+                        column: x => x.AuthorId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_AuthorId1",
+                name: "IX_Comments_AuthorId",
                 table: "Comments",
-                column: "AuthorId1");
+                column: "AuthorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_ParentId1",
@@ -348,19 +347,19 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Playlists_AuthorId1",
+                name: "IX_Playlists_AuthorId",
                 table: "Playlists",
-                column: "AuthorId1");
+                column: "AuthorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reviews_AuthorId1",
+                name: "IX_Reviews_AuthorId",
                 table: "Reviews",
-                column: "AuthorId1");
+                column: "AuthorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reviews_MovieId1",
+                name: "IX_Reviews_MovieId",
                 table: "Reviews",
-                column: "MovieId1");
+                column: "MovieId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RoomUser_UsersId",

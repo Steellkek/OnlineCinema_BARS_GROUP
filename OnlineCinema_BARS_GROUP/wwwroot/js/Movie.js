@@ -16,7 +16,7 @@
         htmlMovie+=`
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-6"><img src="${movie.imagePath}" alt="${movie.name}" width=70% height=70%></div>
+                <div class="col-sm-6"><img src="${movie.imagePath}" alt="${movie.title}" width=70% height=70%></div>
                 <div class="col-md-4">
                     <div class="grid">
                         <div class="g-col-4"><h3>${movie.title}</h3></div>
@@ -27,14 +27,16 @@
             </div>    
             <div class="row">
                 <div class="col"></div>
-                <div class="col-md-6"><iframe width=100% height="400px" src="https://www.youtube.com/embed/3FQVINAen3U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
                 <div class="col"></div>
             </div>
         </div>
 
         </div>`;
-
+        document.getElementById("Title").innerHTML = movie.title;
         document.getElementById("movie").innerHTML = htmlMovie;
+    }
+    else{
+        alert("У нас проблемы, попробуйте зайти через пару минут!!!")
     }
 }
 GetMovie();
