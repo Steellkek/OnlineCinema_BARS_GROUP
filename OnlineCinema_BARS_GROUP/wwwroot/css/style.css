@@ -1,3 +1,14 @@
 ﻿.hide{
     display: none;
 }
+.centerLayer {
+    width: 400px; /* Ширина слоя в пикселах */
+    margin: 0 auto; /* Отступ слева и справа */
+    text-align: center; /* Выравнивание содержимого слоя по левому краю */
+}
+.inc {
+    padding-right: 10px;
+    padding-top: 80px;
+    float: left;
+}
+
