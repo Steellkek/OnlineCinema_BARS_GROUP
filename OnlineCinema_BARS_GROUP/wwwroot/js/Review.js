@@ -13,10 +13,13 @@ document.getElementById("review-add").onclick= async function () {
     }
     if((review!=="")&&(rate!=null)) {
         let userId;
-        console.log(localStorage.user);
-        const response = await fetch("/api/User/" + localStorage.user, {
+        console.log(sessionStorage.user);
+        const response = await fetch("/api/User/" + sessionStorage.user, {
             method: "GET",
-            headers: {"Accept": "application/json"}
+            headers: {
+                "Authorization": "Bearer " + sessionStorage.getItem("accessToken"),
+                "Accept": "application/json"
+            }
         });
         if (response.ok===true){
             const user= await response.json();
@@ -29,22 +32,25 @@ document.getElementById("review-add").onclick= async function () {
             comment: review.toString(),
             dislikes: 0,
             likes: 0,
-            movieId: parseInt(localStorage.id),
+            movieId: parseInt(sessionStorage.id),
             time: Math.floor(Date.now() / 1000),
             rating:parseInt(rate)
         }
         console.log(Review)
         let response1 = await fetch('api/Review', {
             method: 'POST',
-            headers: {"Content-Type": "application/json" },
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + sessionStorage.getItem("accessToken"),
+            },
             body: JSON.stringify(Review)
         });
         if (response1.ok === true) {
-            document.getElementById("review-body").value="";
+            document.getElementById("review-body").value = "";
             GetComments();
         }
     }
-    else{
+    else {
         alert("Вы не ввели отзыв или не оставили оценку!!")
     }
     
@@ -55,9 +61,9 @@ document.getElementById("review-add").onclick= async function () {
 
 //вывод отзывов
 async function GetComments() {
-    console.log(localStorage.id)
+    console.log(sessionStorage.id)
     // отправляет запрос и получаем ответ
-    const response = await fetch("/api/Review/" + localStorage.id , {
+    const response = await fetch("/api/Review/" + sessionStorage.id , {
         method: "GET",
         headers: {"Accept": "application/json"}
     });
@@ -66,7 +72,7 @@ async function GetComments() {
         console.log(reviews);
         let htmlReviews='';
         reviews.forEach((review)=>{
-            if (review.author.userName===localStorage.user){
+            if (review.author.userName === sessionStorage.user){
                 document.getElementById("Add-review").classList.add('hide')
             }
             htmlReviews += `<p class="text-right small"><em>${timeConverter(review.time)}</em></p>`;

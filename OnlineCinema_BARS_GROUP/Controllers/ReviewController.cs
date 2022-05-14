@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OnlineCinema_BARS_GROUP.Data;
 using OnlineCinema_BARS_GROUP.Data.Intarfaces;
 using OnlineCinema_BARS_GROUP.Data.Models;
 
 namespace OnlineCinema_BARS_GROUP.Controllers;
-
 [ApiController]
 [Route("api/[controller]")]
 public class ReviewController:Controller
@@ -31,7 +31,7 @@ public class ReviewController:Controller
         }
         
     }
-
+    [Authorize]
     [HttpPost]
     public Task<ActionResult<Review>> Add(Review review)
     {

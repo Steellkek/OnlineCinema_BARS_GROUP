@@ -7,6 +7,7 @@ using OnlineCinema_BARS_GROUP.Data.Models;
 
 namespace OnlineCinema_BARS_GROUP.Controllers
 {
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class RegistrationController : ControllerBase

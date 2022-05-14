@@ -60,7 +60,7 @@ namespace OnlineCinema_BARS_GROUP
                 app.UseDeveloperExceptionPage();
             }
             app.UseDefaultFiles(new DefaultFilesOptions { DefaultFileNames = new 
-                List<string> { "/index.html" } });
+                List<string> { "/registration.html" } });
             app.UseStatusCodePages();
             app.UseStaticFiles();
 

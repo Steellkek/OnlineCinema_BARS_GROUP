@@ -5,7 +5,7 @@ document.forms["userForm"].addEventListener("submit", e => {
     const form = document.forms["userForm"];
     const username = form.elements["username"].value;
     const password = form.elements["password"].value;
-    localStorage["user"]= username;
+    sessionStorage["user"] = username;
     Login(username, password);
 });
 

@@ -11,6 +11,7 @@ using System.Text;
 
 namespace OnlineCinema_BARS_GROUP.Controllers
 {
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class LoginController : ControllerBase

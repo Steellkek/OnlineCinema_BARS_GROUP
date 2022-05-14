@@ -36,16 +36,15 @@ async function GetMovies() {
         `;
     }
     else {
-        alert("У нас проблемы, попробуйте зайти через пару минут!!!")
+        alert("Войдите в систему, прежде чем смотреть фильмы!!!")
     }
 }
 
 //Перейти на фильм при нажатии на картинку
 function GoToMovie() {
-    localStorage["id"] = event.target.id;
+    sessionStorage["id"] = event.target.id;
     window.location.href = 'Movie.html';
 }
-
 
 GetMovies();
 
