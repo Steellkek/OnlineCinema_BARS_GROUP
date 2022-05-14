@@ -14,7 +14,12 @@ public class ReviewRepository:IReview
     }
     public IEnumerable<Review> AllReview(int movieId)
     {
-        return _context.Reviews.Where(u=>u.MovieId==movieId).Include(u=>u.Author).ToList();
+        return _context.Reviews
+            .Where(u=>u.MovieId==movieId)
+            .Include(u=>u.Author)
+            .OrderBy(x=>x.Time)
+            .Reverse()
+            .ToList();
     }
 
     public void Post(Review review)

@@ -1,7 +1,17 @@
+//добавление отзыва
 document.getElementById("review-add").onclick= async function () {
     event.preventDefault();
     let review = document.getElementById("review-body").value;
-    if(review!=="") {
+    const Rating = document.querySelectorAll('input[name="rating"]')
+    let rate;
+    for (const f of Rating) {
+        if (f.checked) {
+            rate=f.value
+            break
+        }
+        rate=null;
+    }
+    if((review!=="")&&(rate!=null)) {
         let userId;
         console.log(localStorage.user);
         const response = await fetch("/api/User/" + localStorage.user, {
@@ -20,7 +30,8 @@ document.getElementById("review-add").onclick= async function () {
             dislikes: 0,
             likes: 0,
             movieId: parseInt(localStorage.id),
-            time: Math.floor(Date.now() / 1000)
+            time: Math.floor(Date.now() / 1000),
+            rating:parseInt(rate)
         }
         console.log(Review)
         let response1 = await fetch('api/Review', {
@@ -34,7 +45,7 @@ document.getElementById("review-add").onclick= async function () {
         }
     }
     else{
-        alert("Вы не ввели отзыв!!")
+        alert("Вы не ввели отзыв или не оставили оценку!!")
     }
     
 
@@ -42,7 +53,7 @@ document.getElementById("review-add").onclick= async function () {
 
 
 
-
+//вывод отзывов
 async function GetComments() {
     console.log(localStorage.id)
     // отправляет запрос и получаем ответ
@@ -55,9 +66,13 @@ async function GetComments() {
         console.log(reviews);
         let htmlReviews='';
         reviews.forEach((review)=>{
+            if (review.author.userName===localStorage.user){
+                document.getElementById("Add-review").classList.add('hide')
+            }
             htmlReviews += `<p class="text-right small"><em>${timeConverter(review.time)}</em></p>`;
             htmlReviews+=`<p class="alert alert-primary">Пользователь: ${review.author.userName}</p>`
-            htmlReviews+=`<p class="alert alert-success">Отзыв: ${review.comment}</p>`
+            htmlReviews+=`<p class="alert alert-success">Оценка: ${'★'.repeat(review.rating)}<br>
+            Отзыв: ${review.comment}</p>`
         })
         document.getElementById("reviews").innerHTML=htmlReviews;
     }

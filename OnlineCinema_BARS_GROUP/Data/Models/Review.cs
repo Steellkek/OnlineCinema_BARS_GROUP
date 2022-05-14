@@ -8,6 +8,7 @@ public class Review
     public int MovieId { get; set; }
     public Movie? Movie { get; set; } 
     public string Comment { get; set; }
+    public int Rating { get; set; }
     public long Time { get; set; }
     //public List<Comment> Comments { get; set; } = new();
     public int Likes { get; set; }
