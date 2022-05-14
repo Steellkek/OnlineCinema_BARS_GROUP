@@ -74,6 +74,9 @@ namespace OnlineCinema_BARS_GROUP
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapControllers();
             });
+            
+            var seedData = new SeedData();
+            seedData.EnsurePopulated(app);
         }
     }
 }
