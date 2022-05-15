@@ -7,6 +7,7 @@ document.getElementById("review-add").onclick= async function () {
     for (const f of Rating) {
         if (f.checked) {
             rate=f.value
+            f.checked=false
             break
         }
         rate=null;
@@ -68,9 +69,12 @@ async function GetComments() {
         const reviews = await response.json();
         console.log(reviews);
         let htmlReviews='';
+        console.log(reviews.length)
         reviews.forEach((review)=>{
             if (review.author.userName === sessionStorage.user){
                 document.getElementById("Add-review").classList.add('hide')
+                document.getElementById("delete").classList.remove('hide')
+                document.getElementById("delete").name=review.id;
             }
             htmlReviews += `<p class="text-right small"><em>${timeConverter(review.time)}</em></p>`;
             htmlReviews+=`<p class="alert alert-primary">Пользователь: ${review.author.userName}</p>`
@@ -78,6 +82,19 @@ async function GetComments() {
             Отзыв: ${review.comment}</p>`
         })
         document.getElementById("reviews").innerHTML=htmlReviews;
+    }
+}
+
+document.getElementById("delete").onclick= async function (){
+    let id =document.getElementById("delete").name
+    let response1 = await fetch('api/Review/'+id, {
+        method: 'DELETE',
+        headers: {"Accept": "application/json"}
+    });
+    if (response1.ok === true) {
+        document.getElementById("Add-review").classList.remove('hide')
+        document.getElementById("delete").classList.add('hide')
+        GetComments();
     }
 }
 

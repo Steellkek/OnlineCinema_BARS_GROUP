@@ -6,4 +6,5 @@ public interface IReview
 {
     IEnumerable<Review> AllReview(int movieId);
     void Post(Review review);
+    Review Delete(Guid id);
 }

@@ -16,9 +16,8 @@
         htmlMovie+=`
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-3"></div>
-                <div class="col-sm-3"><img src="${movie.imagePath}" alt="${movie.title}" width=100% height=100%></div>
-                <div class="col-md-4">
+                <div class="col-sm-3 offset-md-3"><img src="${movie.imagePath}" alt="${movie.title}" width=100% height=100%></div>
+                <div class="col-md-5">
                     <div class="grid">
                         <div class="g-col-4"><h1>${movie.title}</h1></div>
                         <div class="g-col-4"><h4>Продолжителность:<br><font size="4">${movie.duration}</font></h4></div>
@@ -30,9 +29,9 @@
                 </div>
             </div>    
             <div class="row">
-                <div class="col"></div>
-                <iframe width="731" height="411" src="${movie.filmPath}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <div class="col"></div>
+                <div class="col-4 offset-md-4">
+                    <iframe width="731" height="411" src="${movie.filmPath}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </div>
         </div>
 

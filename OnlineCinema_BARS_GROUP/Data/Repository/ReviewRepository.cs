@@ -27,4 +27,12 @@ public class ReviewRepository:IReview
         _context.Reviews.Add(review);
         _context.SaveChanges();
     }
+
+    public Review Delete(Guid id)
+    {
+        Review review = _context.Reviews.FirstOrDefault(x => x.Id == id)!;
+        _context.Reviews.Remove(review);
+        _context.SaveChanges();
+        return review;
+    }
 }
