@@ -59,10 +59,7 @@ document.getElementById("review-add").onclick= async function () {
 
 
 
-//вывод отзывов
 async function GetComments() {
-    console.log(sessionStorage.id)
-    // отправляет запрос и получаем ответ
     const response = await fetch("/api/Review/" + sessionStorage.id , {
         method: "GET",
         headers: {"Accept": "application/json"}
@@ -93,7 +90,7 @@ function uuidv4() {
 
 function timeConverter(UNIX_timestamp){
     var a = new Date(UNIX_timestamp * 1000);
-    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var months = ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'];
     var year = a.getFullYear();
     var month = months[a.getMonth()];
     var date = a.getDate();
