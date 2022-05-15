@@ -11,7 +11,8 @@ public class ReviewController:Controller
 {
     
     private readonly IReview _review;
-    public ReviewController(IReview review, CinemaContext context)
+
+    public ReviewController(IReview review)
     {
         _review = review;
     }
@@ -37,5 +38,12 @@ public class ReviewController:Controller
     {
         _review.Post(review);
         return Task.FromResult<ActionResult<Review>>(Ok(review));
+    }
+    
+    [HttpDelete("{id}")]
+    public async Task<ActionResult<Review>> Get(Guid id)
+    {
+        Review review = _review.Delete(id);
+        return  Ok(review);
     }
 }
