@@ -59,4 +59,5 @@ public class Movie
     public List<Room> Rooms { get; set; } = new();
     
     public List<Playlist> Playlists { get; set; } = new();
+    public List<FavoriteList> FavoriteLists { get; set; } = new();
 }

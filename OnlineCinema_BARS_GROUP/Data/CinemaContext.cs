@@ -14,6 +14,7 @@ public class CinemaContext : DbContext
     public DbSet<Review> Reviews { get; set; }
     public DbSet<Room> Rooms { get; set; }
     public DbSet<User> Users { get; set; }
+    public DbSet<FavoriteList> FavoriteLists { get; set; }
 
     public CinemaContext(DbContextOptions<CinemaContext> options)
         : base(options)
@@ -67,6 +68,10 @@ public class CinemaContext : DbContext
         
         modelBuilder.Entity<Movie>()
             .HasMany(x => x.Playlists)
+            .WithMany(x => x.Movies);
+        
+        modelBuilder.Entity<Movie>()
+            .HasMany(x => x.FavoriteLists)
             .WithMany(x => x.Movies);
         
         modelBuilder.Entity<User>()
