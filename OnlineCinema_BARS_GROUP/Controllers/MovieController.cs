@@ -1,8 +1,11 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Korzh.EasyQuery.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using OnlineCinema_BARS_GROUP.Data.Intarfaces;
 using OnlineCinema_BARS_GROUP.Data.Models;
+using OnlineCinema_BARS_GROUP.Data.Options;
 
 namespace OnlineCinema_BARS_GROUP.Controllers
 {
@@ -12,15 +15,51 @@ namespace OnlineCinema_BARS_GROUP.Controllers
     public class MovieController : Controller
     {
         private readonly IMovie _movie;
-        public  MovieController(IMovie movie)
+
+        public MovieController(IMovie movie)
         {
             _movie = movie;
         }
+
         [HttpGet]
-        public  Task<ActionResult<IEnumerable<Movie>>> Index() {
-            return   Task.FromResult<ActionResult<IEnumerable<Movie>>>(_movie.AllMovies.ToList());
+        public Task<ActionResult<IEnumerable<Movie>>> Index()
+        {
+            return Task.FromResult<ActionResult<IEnumerable<Movie>>>(_movie.AllMovies.ToList());
         }
         
+        /// <summary>
+        /// Возвращает отфильтрованный список фильмов.
+        /// </summary>
+        /// <param name="moviesOptionsDto">Настройки фильтрации.</param>
+        /// <returns>Отфильтрованный список фильмов</returns>
+        [HttpGet("list")]
+        public async Task<ActionResult<IEnumerable<Movie>>> List(MoviesOptionsDTO moviesOptionsDto)
+        {
+            IQueryable<Movie> movies = _movie.Movies
+                .Include(x => x.Category)
+                .Include(x => x.Genres);
+
+            var filteredMovies = movies
+                .FullTextSearchQuery(moviesOptionsDto.SearchText);
+
+            if (moviesOptionsDto.CategoryId != null)
+            {
+                filteredMovies = filteredMovies
+                    .Where(x => x.CategoryId == moviesOptionsDto.CategoryId);
+            }
+
+            var sortedBooks = moviesOptionsDto.SortOrder == SortOrder.Ascending
+                ? filteredMovies.OrderBy(x => x.Views)
+                : filteredMovies.OrderByDescending(x => x.Views);
+            
+            var pagedMovies = await sortedBooks
+                .Skip((moviesOptionsDto.PageNumber - 1) * moviesOptionsDto.PageSize)
+                .Take(moviesOptionsDto.PageSize)
+                .ToListAsync();
+
+                return pagedMovies;
+        }
+
         [HttpGet("{id}")]
         public Task<ActionResult<Movie>> GetById(int id)
         {
@@ -29,4 +68,3 @@ namespace OnlineCinema_BARS_GROUP.Controllers
         }
     }
 }
-
