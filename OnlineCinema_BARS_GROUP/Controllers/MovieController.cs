@@ -15,10 +15,12 @@ namespace OnlineCinema_BARS_GROUP.Controllers
     public class MovieController : Controller
     {
         private readonly IMovie _movie;
+        private readonly ICategory _category;
 
-        public MovieController(IMovie movie)
+        public MovieController(IMovie movie, ICategory category)
         {
             _movie = movie;
+            _category = category;
         }
 
         [HttpGet]
@@ -59,6 +61,12 @@ namespace OnlineCinema_BARS_GROUP.Controllers
 
                 return pagedMovies;
         }
+
+        // [HttpGet("allGenres")]
+        // public async Task<ActionResult<IEnumerable<Genre>>> AllGenres() => await _genre.AllGenres.ToListAsync();
+        
+        [HttpGet("allCategories")]
+        public async Task<ActionResult<IEnumerable<Category>>> AllCategories() => await _category.Categories.ToListAsync();
 
         [HttpGet("{id}")]
         public Task<ActionResult<Movie>> GetById(int id)
