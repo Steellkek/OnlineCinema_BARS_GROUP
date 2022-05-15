@@ -69,6 +69,7 @@ async function GetComments() {
         const reviews = await response.json();
         console.log(reviews);
         let htmlReviews='';
+        console.log(reviews.length)
         reviews.forEach((review)=>{
             if (review.author.userName === sessionStorage.user){
                 document.getElementById("Add-review").classList.add('hide')
