@@ -1,7 +1,7 @@
 ﻿using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using OnlineCinema_BARS_GROUP.Data.Models;
 
-namespace OnlineCinema_BARS_GROUP.Data.DTO;
+namespace OnlineCinema_BARS_GROUP.Data.Options;
 
 public class MoviesOptionsDTO
 {

@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using OnlineCinema_BARS_GROUP.Data.DTO;
 using OnlineCinema_BARS_GROUP.Data.Intarfaces;
 using OnlineCinema_BARS_GROUP.Data.Models;
+using OnlineCinema_BARS_GROUP.Data.Options;
 
 namespace OnlineCinema_BARS_GROUP.Controllers
 {
