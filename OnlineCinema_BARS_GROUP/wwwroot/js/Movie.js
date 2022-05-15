@@ -16,17 +16,22 @@
         htmlMovie+=`
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-6"><img src="${movie.imagePath}" alt="${movie.title}" width=70% height=70%></div>
+                <div class="col-sm-3"></div>
+                <div class="col-sm-3"><img src="${movie.imagePath}" alt="${movie.title}" width=100% height=100%></div>
                 <div class="col-md-4">
                     <div class="grid">
-                        <div class="g-col-4"><h3>${movie.title}</h3></div>
-                        <div class="g-col-4"><h5>Описание: ${movie.longDescription}</h5></div>
-                        <div class="g-col-4"><h4>Жанр:<h5>${htmlCategory}<h5></h4></div>
+                        <div class="g-col-4"><h1>${movie.title}</h1></div>
+                        <div class="g-col-4"><h4>Продолжителность:<br><font size="4">${movie.duration}</font></h4></div>
+                        <div class="g-col-4"><h4 id="Rating">Оценка:<br><font size="4">КП ${movie.rating}</font></h4></div>
+                        <div class="g-col-4"><h4>Жанр:<br><font size="4">${htmlCategory}</font></h4></div>
+                        <div class="g-col-4"><h4>Описание:<br><font size="4"> ${movie.longDescription}</font></h4></div>
+
                     </div>
                 </div>
             </div>    
             <div class="row">
                 <div class="col"></div>
+                <iframe width="731" height="411" src="${movie.filmPath}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <div class="col"></div>
             </div>
         </div>

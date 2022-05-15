@@ -24,7 +24,7 @@ async function GetMovies() {
                 
                 <div class="col-3">
                     <button onclick="GoToMovie()" type="button" class="btn btn-link"><div class="photo"  id="${movie.id}" alt="Смотреть фильм"><img src=${movie.imagePath} alt="movie" class="image"></div></button>
-                    <h5>${movie.title}</h5>
+                    <h4>${movie.title}</h4>
                     <h6>${htmlCategory}</h6>
                 </div>
                 
