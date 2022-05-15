@@ -2,6 +2,7 @@ using Korzh.EasyQuery.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using OnlineCinema_BARS_GROUP.Data.DTO;
 using OnlineCinema_BARS_GROUP.Data.Intarfaces;
 using OnlineCinema_BARS_GROUP.Data.Models;
@@ -41,7 +42,11 @@ namespace OnlineCinema_BARS_GROUP.Controllers
             var filteredMovies = movies
                 .FullTextSearchQuery(moviesOptionsDto.SearchText);
             
-            var pagedMovies = await filteredMovies
+            var sortedBooks = moviesOptionsDto.SortOrder == SortOrder.Ascending
+                ? filteredMovies.OrderBy(x => x.Views)
+                : filteredMovies.OrderByDescending(x => x.Views);
+            
+            var pagedMovies = await sortedBooks
                 .Skip((moviesOptionsDto.PageNumber - 1) * moviesOptionsDto.PageSize)
                 .Take(moviesOptionsDto.PageSize)
                 .ToListAsync();
