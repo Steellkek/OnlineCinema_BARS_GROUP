@@ -1,3 +1,4 @@
+using Korzh.EasyQuery.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -37,7 +38,10 @@ namespace OnlineCinema_BARS_GROUP.Controllers
                 .Include(x => x.Category)
                 .Include(x => x.Genres);
 
-            var pagedMovies = await movies
+            var filteredMovies = movies
+                .FullTextSearchQuery(moviesOptionsDto.SearchText);
+            
+            var pagedMovies = await filteredMovies
                 .Skip((moviesOptionsDto.PageNumber - 1) * moviesOptionsDto.PageSize)
                 .Take(moviesOptionsDto.PageSize)
                 .ToListAsync();
