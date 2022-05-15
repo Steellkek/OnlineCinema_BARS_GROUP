@@ -41,7 +41,13 @@ namespace OnlineCinema_BARS_GROUP.Controllers
 
             var filteredMovies = movies
                 .FullTextSearchQuery(moviesOptionsDto.SearchText);
-            
+
+            if (moviesOptionsDto.CategoryId != null)
+            {
+                filteredMovies = filteredMovies
+                    .Where(x => x.CategoryId == moviesOptionsDto.CategoryId);
+            }
+
             var sortedBooks = moviesOptionsDto.SortOrder == SortOrder.Ascending
                 ? filteredMovies.OrderBy(x => x.Views)
                 : filteredMovies.OrderByDescending(x => x.Views);
@@ -51,7 +57,7 @@ namespace OnlineCinema_BARS_GROUP.Controllers
                 .Take(moviesOptionsDto.PageSize)
                 .ToListAsync();
 
-            return pagedMovies;
+                return pagedMovies;
         }
 
         [HttpGet("{id}")]
