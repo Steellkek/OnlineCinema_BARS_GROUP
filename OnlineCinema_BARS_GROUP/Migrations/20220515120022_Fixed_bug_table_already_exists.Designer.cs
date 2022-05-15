@@ -12,8 +12,8 @@ using OnlineCinema_BARS_GROUP.Data;
 namespace OnlineCinema_BARS_GROUP.Migrations
 {
     [DbContext(typeof(CinemaContext))]
-    [Migration("20220514095758_initial")]
-    partial class initial
+    [Migration("20220515120022_Fixed_bug_table_already_exists")]
+    partial class Fixed_bug_table_already_exists
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

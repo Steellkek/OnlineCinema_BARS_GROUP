@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace OnlineCinema_BARS_GROUP.Migrations
 {
-    public partial class newIntial : Migration
+    public partial class Fixed_bug_table_already_exists : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -216,6 +216,8 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                     AuthorId = table.Column<int>(type: "integer", nullable: false),
                     MovieId = table.Column<int>(type: "integer", nullable: false),
                     Comment = table.Column<string>(type: "text", nullable: false),
+                    Rating = table.Column<int>(type: "integer", nullable: false),
+                    Time = table.Column<long>(type: "bigint", nullable: false),
                     Likes = table.Column<int>(type: "integer", nullable: false),
                     Dislikes = table.Column<int>(type: "integer", nullable: false)
                 },
