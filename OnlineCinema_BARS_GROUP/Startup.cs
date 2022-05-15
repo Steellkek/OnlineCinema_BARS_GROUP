@@ -1,16 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using OnlineCinema_BARS_GROUP.Data;
 using OnlineCinema_BARS_GROUP.Data.Intarfaces;
-using OnlineCinema_BARS_GROUP.Data.Models;
 using OnlineCinema_BARS_GROUP.Data.Repository;
 
 namespace OnlineCinema_BARS_GROUP
@@ -30,6 +23,7 @@ namespace OnlineCinema_BARS_GROUP
             services.AddTransient<IMovie, MovieRepository>();
             services.AddTransient<IReview, ReviewRepository>();
             services.AddTransient<IUser, UserRepository>();
+            services.AddTransient<ICategory, CategoryRepository>();
             services.AddDbContext<CinemaContext>(options => options.UseNpgsql(connection));
 
             services.AddAuthentication(options => { options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;})
