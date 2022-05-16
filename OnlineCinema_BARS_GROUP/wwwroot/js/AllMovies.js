@@ -2,18 +2,20 @@
 function renderFilterCategories(categories, movies) {
     let html = ``;
     categories.forEach(x => {
-        let category = x;
-        html+=`<li>
+        let category = x.name;
+        //console.log(movies)
+        html=`<li>
                     <a href="#"
-                       id = "filter_${x.name}">
+                       class="btn"
+                       id = "${x.id}"
+                       onclick="getMoviesByCategory()">
                        ${x.name}
                     </a>
-               </li>`
-        document.getElementById(`filter_${x.name}`)
-                .addEventListener('click', renderList(movies));
+               </li>`;
+        document.getElementById("filterCategories").innerHTML += html;
     })
     
-    document.getElementById("filterCategories").innerHTML = html;
+
 }
 
 
@@ -44,6 +46,26 @@ async function renderList(movies, categoryId = null) {
     document.getElementById("movies").innerHTML = `
         <div class="container"><div class="row row-cols-4">${htmlCatalog}</div></div>
     `;
+}
+
+async function getMoviesByCategory() {
+    let categoryId=event.target.id;
+    console.log(categoryId)
+     //отправляет запрос и получаем ответ
+    const response = await fetch("/api/Movie/list/category/"+categoryId, {
+        method: "Post",
+        headers: {
+            "Authorization": "Bearer " + sessionStorage.getItem("accessToken"),
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(categoryId)
+    }).catch(e => {
+        console.error(e);
+    });
+
+    // получаем данные
+    const mo = await response.json();
+    renderList(mo)
 }
 
 // Получить список фильмов.
@@ -96,11 +118,12 @@ async function renderPage() {
         let movies = await getMovies();
         let categories = await getCategories();
         
-        
-        renderList(movies);
+        console.log(categories)
+        await renderList(movies);
         renderFilterCategories(categories, movies);
     }
     catch(e) {
+        console.log(e)
         alert("Войдите в систему, прежде чем смотреть фильмы!!!")
     }
 }

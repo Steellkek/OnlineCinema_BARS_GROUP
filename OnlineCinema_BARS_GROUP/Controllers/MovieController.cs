@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
+using OnlineCinema_BARS_GROUP.Data;
 using OnlineCinema_BARS_GROUP.Data.Intarfaces;
 using OnlineCinema_BARS_GROUP.Data.Models;
 using OnlineCinema_BARS_GROUP.Data.Options;
@@ -16,11 +17,13 @@ namespace OnlineCinema_BARS_GROUP.Controllers
     {
         private readonly IMovie _movie;
         private readonly ICategory _category;
+        private readonly CinemaContext _context;
 
-        public MovieController(IMovie movie, ICategory category)
+        public MovieController(IMovie movie, ICategory category, CinemaContext context)
         {
             _movie = movie;
             _category = category;
+            _context = context;
         }
 
         [HttpGet]
@@ -28,38 +31,42 @@ namespace OnlineCinema_BARS_GROUP.Controllers
         {
             return Task.FromResult<ActionResult<IEnumerable<Movie>>>(_movie.AllMovies.ToList());
         }
-        
+
         /// <summary>
         /// Возвращает отфильтрованный список фильмов.
         /// </summary>
         /// <param name="moviesOptionsDto">Настройки фильтрации.</param>
+        /// <param name="categoryId"></param>
         /// <returns>Отфильтрованный список фильмов</returns>
-        [HttpGet("list")]
-        public async Task<ActionResult<IEnumerable<Movie>>> List(MoviesOptionsDTO moviesOptionsDto)
+        [HttpPost("list/category/{categoryId}")]
+        public async Task<ActionResult<IEnumerable<Movie>>> List(Guid categoryId)
         {
-            IQueryable<Movie> movies = _movie.Movies
+            Console.WriteLine(categoryId);
+            /*IQueryable<Movie> movies = _movie.Movies
                 .Include(x => x.Category)
                 .Include(x => x.Genres);
 
             var filteredMovies = movies
                 .FullTextSearchQuery(moviesOptionsDto.SearchText);
 
-            if (moviesOptionsDto.CategoryId != null)
+
+            if (categoryId != null)
             {
                 filteredMovies = filteredMovies
                     .Where(x => x.CategoryId == moviesOptionsDto.CategoryId);
-            }
+            }*/
+            var filteredMovies = _context.Movies.Where(x => x.CategoryId == categoryId).ToList();
 
-            var sortedBooks = moviesOptionsDto.SortOrder == SortOrder.Ascending
+            /*var sortedBooks = moviesOptionsDto.SortOrder == SortOrder.Ascending
                 ? filteredMovies.OrderBy(x => x.Views)
                 : filteredMovies.OrderByDescending(x => x.Views);
             
-            var pagedMovies = await sortedBooks
+            //var pagedMovies = await sortedBooks
                 .Skip((moviesOptionsDto.PageNumber - 1) * moviesOptionsDto.PageSize)
                 .Take(moviesOptionsDto.PageSize)
-                .ToListAsync();
+                .ToListAsync();*/
 
-                return pagedMovies;
+                return new ActionResult<IEnumerable<Movie>>(filteredMovies);
         }
 
         // [HttpGet("allGenres")]
