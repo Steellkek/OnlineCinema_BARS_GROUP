@@ -1,27 +1,32 @@
 ﻿// Рендеринг панели фильтров
-function renderFilterCategories(categories, movies) {
+function renderFilterCategories(categories, genres) {
     let html = ``;
-    html+=`<li>
-                    <a href="#"
-                       class="btn"
-                       id = ""
-                       onclick="getMoviesByCategory()">
-                       Все фильмы
-                    </a>
-               </li>`;
+    html=`<div>
+            <input type="radio" name="Category" id="" checked >
+            <label>Все фильмы<label>
+          </div>`;
+    document.getElementById("filterCategories").innerHTML += html;
     categories.forEach(x => {
-        let category = x.name;
         //console.log(movies)
-        html+=`<li>
-                    <a href="#"
-                       class="btn"
-                       id = "${x.id}"
-                       onclick="getMoviesByCategory()">
-                       ${x.name}
-                    </a>
-               </li>`;
+        html=`<div>
+                    <input type="radio" name="Category" id="${x.id}">
+                    <label>${x.name}</label>
+              </div>`;
+        document.getElementById("filterCategories").innerHTML += html;
     })
-    document.getElementById("filterCategories").innerHTML = html;
+    html=`<div>
+            <input type="radio" name="Genre" id="" checked >
+            <label>Все жанры<label>
+          </div>`;
+    document.getElementById("filterGenres").innerHTML += html;
+    genres.forEach(x => {
+        //console.log(movies)
+        html=`<div>
+                <input type="radio" name="Genre" id="${x.id}" >
+                <label>${x.name}<label>
+              </div>`;
+        document.getElementById("filterGenres").innerHTML += html;
+    })
 }
 
 
@@ -55,10 +60,26 @@ async function renderList(movies, categoryId = null) {
 }
 
 async function getMoviesByCategory() {
-    let categoryId=event.target.id;
-    console.log(categoryId)
+    console.log(7)
+    let categorys=document.querySelectorAll('input[name="Category"]')
+    let genres = document.querySelectorAll('input[name="Genre"]')
+    let genreId
+    for (const l of genres) {
+        if (l.checked) {
+            genreId=l.id
+            break
+        }
+    }
+    let categoryId;
+    for (const f of categorys) {
+        if (f.checked) {
+            categoryId=f.id
+            break
+        }
+    }
     let moviesOptionsDto={
-        categoryId:categoryId
+        categoryId:categoryId,
+        genreId:genreId
     }
      //отправляет запрос и получаем ответ
     const response = await fetch("/api/Movie/list", {
@@ -71,7 +92,7 @@ async function getMoviesByCategory() {
     }).catch(e => {
         console.error(e);
     });
-
+    console.log(JSON.stringify(moviesOptionsDto))
     // получаем данные
     const mo = await response.json();
     renderList(mo)
@@ -145,10 +166,11 @@ async function renderPage() {
     try {
         let movies = await getMovies();
         let categories = await getCategories();
+        let genres = await getGenres();
         
         console.log(categories)
         await renderList(movies);
-        renderFilterCategories(categories, movies);
+        renderFilterCategories(categories, genres);
     }
     catch(e) {
         console.log(e)

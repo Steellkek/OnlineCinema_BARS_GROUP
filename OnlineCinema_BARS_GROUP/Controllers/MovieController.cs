@@ -41,7 +41,6 @@ namespace OnlineCinema_BARS_GROUP.Controllers
         [HttpPost("list")]
         public async Task<ActionResult<IEnumerable<Movie>>> List(MoviesOptionsDTO moviesOptionsDto)
         {
-            Console.WriteLine(moviesOptionsDto.CategoryId);
             IQueryable<Movie> movies = _movie.Movies
                 .Include(x => x.Category)
                 .Include(x => x.Genres);
@@ -55,10 +54,30 @@ namespace OnlineCinema_BARS_GROUP.Controllers
                 filteredMovies = filteredMovies
                     .Where(x => x.CategoryId == moviesOptionsDto.CategoryId);
             }
-            else
+
+            if (moviesOptionsDto.GenreId != null)
             {
-                filteredMovies = filteredMovies;
+                filteredMovies = filteredMovies
+                    .SelectMany(x => x.Genres, (x, l) => new {Movie = x, GenreId = l.Id})
+                    .Where(x => x.GenreId == moviesOptionsDto.GenreId)
+                    .Select(x => x.Movie);
             }
+
+            /*(List<Movie> f = new List<Movie>();
+
+            foreach (var VARIABLE in filteredMovies)
+            {
+                foreach (var VARIABLE2 in VARIABLE.Genres)
+                {
+                    {
+                        if (moviesOptionsDto.GenreIds.Contains(VARIABLE2.Id))
+                        {
+                            f.Add(VARIABLE);
+                        }
+                    }
+                }
+            }
+
             //var filteredMovies = _context.Movies.Where(x => x.CategoryId == categoryId).ToList();
 
             var sortedBooks = moviesOptionsDto.SortOrder == SortOrder.Ascending
@@ -68,7 +87,7 @@ namespace OnlineCinema_BARS_GROUP.Controllers
             var pagedMovies = await sortedBooks
                 .Skip((moviesOptionsDto.PageNumber - 1) * moviesOptionsDto.PageSize)
                 .Take(moviesOptionsDto.PageSize)
-                .ToListAsync();
+                .ToListAsync();*/
             return new ActionResult<IEnumerable<Movie>>(filteredMovies);
         }
 
