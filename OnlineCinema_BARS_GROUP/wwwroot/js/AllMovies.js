@@ -1,10 +1,18 @@
 ﻿// Рендеринг панели фильтров
 function renderFilterCategories(categories, movies) {
     let html = ``;
+    html+=`<li>
+                    <a href="#"
+                       class="btn"
+                       id = ""
+                       onclick="getMoviesByCategory()">
+                       Все фильмы
+                    </a>
+               </li>`;
     categories.forEach(x => {
         let category = x.name;
         //console.log(movies)
-        html=`<li>
+        html+=`<li>
                     <a href="#"
                        class="btn"
                        id = "${x.id}"
@@ -12,10 +20,8 @@ function renderFilterCategories(categories, movies) {
                        ${x.name}
                     </a>
                </li>`;
-        document.getElementById("filterCategories").innerHTML += html;
     })
-    
-
+    document.getElementById("filterCategories").innerHTML = html;
 }
 
 
@@ -52,7 +58,7 @@ async function getMoviesByCategory() {
     let categoryId=event.target.id;
     console.log(categoryId)
     let moviesOptionsDto={
-        categoryId:categoryId.toString()
+        categoryId:categoryId
     }
      //отправляет запрос и получаем ответ
     const response = await fetch("/api/Movie/list", {
@@ -90,7 +96,7 @@ async function getMovies() {
     return movies;
 }
 
-// Получить список жанров.
+// Получить список категорий.
 async function getCategories() {
     // отправляет запрос и получаем ответ
     const response = await fetch("/api/Movie/allCategories", {
@@ -115,6 +121,25 @@ function GoToMovie() {
     window.location.href = 'Movie.html';
 }
 
+//Получить список жанров.
+async function getGenres() {
+    // отправляет запрос и получаем ответ
+    const response = await fetch("/api/Movie/allGenres", {
+        method: "GET",
+        headers: {
+            "Authorization": "Bearer " + sessionStorage.getItem("accessToken"),
+            "Accept": "application/json"
+        }
+    }).catch(e => {
+        console.error(e);
+    });
+
+    // получаем данные
+    const genres = await response.json();
+    console.log(genres)
+    return genres;
+}
+
 // Рендеринг страницы.
 async function renderPage() {
     try {
@@ -130,7 +155,7 @@ async function renderPage() {
         alert("Войдите в систему, прежде чем смотреть фильмы!!!")
     }
 }
-
+getGenres();
 renderPage();
 
 

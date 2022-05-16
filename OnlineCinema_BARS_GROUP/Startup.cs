@@ -23,6 +23,7 @@ namespace OnlineCinema_BARS_GROUP
             services.AddTransient<IMovie, MovieRepository>();
             services.AddTransient<IReview, ReviewRepository>();
             services.AddTransient<IUser, UserRepository>();
+            services.AddTransient<IGenre, GenryRepository>();
             services.AddTransient<ICategory, CategoryRepository>();
             services.AddDbContext<CinemaContext>(options => options.UseNpgsql(connection));
 

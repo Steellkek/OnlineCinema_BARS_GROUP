@@ -17,13 +17,13 @@ namespace OnlineCinema_BARS_GROUP.Controllers
     {
         private readonly IMovie _movie;
         private readonly ICategory _category;
-        private readonly CinemaContext _context;
+        private readonly IGenre _genre;
 
-        public MovieController(IMovie movie, ICategory category, CinemaContext context)
+        public MovieController(IMovie movie, ICategory category, IGenre genre)
         {
             _movie = movie;
             _category = category;
-            _context = context;
+            _genre = genre;
         }
 
         [HttpGet]
@@ -41,7 +41,7 @@ namespace OnlineCinema_BARS_GROUP.Controllers
         [HttpPost("list")]
         public async Task<ActionResult<IEnumerable<Movie>>> List(MoviesOptionsDTO moviesOptionsDto)
         {
-            //Console.WriteLine(categoryId);
+            Console.WriteLine(moviesOptionsDto.CategoryId);
             IQueryable<Movie> movies = _movie.Movies
                 .Include(x => x.Category)
                 .Include(x => x.Genres);
@@ -54,6 +54,10 @@ namespace OnlineCinema_BARS_GROUP.Controllers
             {
                 filteredMovies = filteredMovies
                     .Where(x => x.CategoryId == moviesOptionsDto.CategoryId);
+            }
+            else
+            {
+                filteredMovies = filteredMovies;
             }
             //var filteredMovies = _context.Movies.Where(x => x.CategoryId == categoryId).ToList();
 
@@ -73,6 +77,9 @@ namespace OnlineCinema_BARS_GROUP.Controllers
         
         [HttpGet("allCategories")]
         public async Task<ActionResult<IEnumerable<Category>>> AllCategories() => await _category.Categories.ToListAsync();
+        
+        [HttpGet("allGenres")]
+        public async Task<ActionResult<IEnumerable<Genre>>> AllGenres() => await _genre.AllGenres.ToListAsync();
 
         [HttpGet("{id}")]
         public Task<ActionResult<Movie>> GetById(int id)
