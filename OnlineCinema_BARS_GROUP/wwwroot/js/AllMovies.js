@@ -51,14 +51,17 @@ async function renderList(movies, categoryId = null) {
 async function getMoviesByCategory() {
     let categoryId=event.target.id;
     console.log(categoryId)
+    let moviesOptionsDto={
+        categoryId:categoryId.toString()
+    }
      //отправляет запрос и получаем ответ
-    const response = await fetch("/api/Movie/list/category/"+categoryId, {
+    const response = await fetch("/api/Movie/list", {
         method: "Post",
         headers: {
+            "Content-Type": "application/json",
             "Authorization": "Bearer " + sessionStorage.getItem("accessToken"),
-            "Accept": "application/json"
         },
-        body: JSON.stringify(categoryId)
+        body: JSON.stringify(moviesOptionsDto)
     }).catch(e => {
         console.error(e);
     });

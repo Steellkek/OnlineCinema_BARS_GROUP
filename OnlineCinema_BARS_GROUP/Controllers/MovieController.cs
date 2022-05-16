@@ -38,11 +38,11 @@ namespace OnlineCinema_BARS_GROUP.Controllers
         /// <param name="moviesOptionsDto">Настройки фильтрации.</param>
         /// <param name="categoryId"></param>
         /// <returns>Отфильтрованный список фильмов</returns>
-        [HttpPost("list/category/{categoryId}")]
-        public async Task<ActionResult<IEnumerable<Movie>>> List(Guid categoryId)
+        [HttpPost("list")]
+        public async Task<ActionResult<IEnumerable<Movie>>> List(MoviesOptionsDTO moviesOptionsDto)
         {
-            Console.WriteLine(categoryId);
-            /*IQueryable<Movie> movies = _movie.Movies
+            //Console.WriteLine(categoryId);
+            IQueryable<Movie> movies = _movie.Movies
                 .Include(x => x.Category)
                 .Include(x => x.Genres);
 
@@ -50,23 +50,22 @@ namespace OnlineCinema_BARS_GROUP.Controllers
                 .FullTextSearchQuery(moviesOptionsDto.SearchText);
 
 
-            if (categoryId != null)
+            if (moviesOptionsDto.CategoryId != null)
             {
                 filteredMovies = filteredMovies
                     .Where(x => x.CategoryId == moviesOptionsDto.CategoryId);
-            }*/
-            var filteredMovies = _context.Movies.Where(x => x.CategoryId == categoryId).ToList();
+            }
+            //var filteredMovies = _context.Movies.Where(x => x.CategoryId == categoryId).ToList();
 
-            /*var sortedBooks = moviesOptionsDto.SortOrder == SortOrder.Ascending
+            var sortedBooks = moviesOptionsDto.SortOrder == SortOrder.Ascending
                 ? filteredMovies.OrderBy(x => x.Views)
                 : filteredMovies.OrderByDescending(x => x.Views);
             
-            //var pagedMovies = await sortedBooks
+            var pagedMovies = await sortedBooks
                 .Skip((moviesOptionsDto.PageNumber - 1) * moviesOptionsDto.PageSize)
                 .Take(moviesOptionsDto.PageSize)
-                .ToListAsync();*/
-
-                return new ActionResult<IEnumerable<Movie>>(filteredMovies);
+                .ToListAsync();
+            return new ActionResult<IEnumerable<Movie>>(filteredMovies);
         }
 
         // [HttpGet("allGenres")]
