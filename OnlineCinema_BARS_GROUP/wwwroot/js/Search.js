@@ -12,8 +12,7 @@ window.onload=() =>{
                 }
                 else{
                     elem.classList.remove('hide')
-                    let str = elem.getElementsByTagName('h4')[0].innerText;
-                    elem.getElementsByTagName('h4')[0].innerHTML=InsertMark(str, elem.innerText.search(value),value.length)
+                    
                 }
             });
         }else
@@ -25,9 +24,5 @@ window.onload=() =>{
         }
 
     }
-}
-
-function InsertMark(string, pos, len){
-    return string.slice(0, pos) + `<mark>`+string.slice(pos,pos+len)+`</mark>`+string.slice(pos+len)
 }
 
