@@ -65,9 +65,7 @@ namespace OnlineCinema_BARS_GROUP.Controllers
             
             return new ActionResult<IEnumerable<Movie>>(filteredMovies);
         }
-
-        // [HttpGet("allGenres")]
-        // public async Task<ActionResult<IEnumerable<Genre>>> AllGenres() => await _genre.AllGenres.ToListAsync();
+        
         
         [HttpGet("allCategories")]
         public async Task<ActionResult<IEnumerable<Category>>> AllCategories() => await _category.Categories.ToListAsync();

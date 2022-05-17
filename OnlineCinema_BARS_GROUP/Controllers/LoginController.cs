@@ -33,7 +33,6 @@ namespace OnlineCinema_BARS_GROUP.Controllers
             if (user != null)
             {
                 var token = Generate(user);
-                Console.WriteLine(token);
                 return Ok(token);
             }
             return BadRequest("Неверно введен никнейм и/или пароль");

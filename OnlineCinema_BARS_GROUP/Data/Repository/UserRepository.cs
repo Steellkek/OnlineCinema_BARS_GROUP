@@ -12,7 +12,6 @@ public class UserRepository:IUser
         _context = context;
     }
 
-    //public IEnumerable<User> GetAllUsers { get; }
     
     public User GetUser(string title)
     {
