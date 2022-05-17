@@ -32,7 +32,8 @@
                 <label for="name">Имя:</label>
                 <input class="form-control" type="text" name="username" />
                 <label for="password">Пароль:</label>
-                <input class="form-control" type="password" name="password" />
+                <input class="form-control" type="password" id="show1" name="password" minlength="3" required />
+                <a href="#" id="show">Показать пароль</a>
                 <p></p>
                 <button type="submit" id="submit" class="btn btn-dark">Войти</button>
             </form>
@@ -42,5 +43,6 @@
         </footer>
     </main>
     <script src="js/login.js"></script>
+    <script src="js/ShowHidePassword.js"></script>
 </body>
 </html>

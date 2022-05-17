@@ -31,8 +31,6 @@ document.getElementById("review-add").onclick= async function () {
             id: uuidv4(),
             authorId: parseInt(userId),
             comment: review.toString(),
-            dislikes: 0,
-            likes: 0,
             movieId: parseInt(sessionStorage.id),
             time: Math.floor(Date.now() / 1000),
             rating:parseInt(rate)
