@@ -16,9 +16,6 @@ public class Movie
     /// </summary>
     public string? LongDescription { get; set; }
 
-    public Guid? AgeRestrictionId { get; set; }
-    public AgeRestriction? AgeRestriction { get; set; }
-
     /// <remark>
     /// прим. Фильм, сериал.
     /// </remark>
@@ -54,7 +51,5 @@ public class Movie
     /// </summary>
     public List<Review> Reviews = new();
 
-    public List<Room> Rooms { get; set; } = new();
     
-    public List<Playlist> Playlists { get; set; } = new();
 }

@@ -10,7 +10,4 @@ public class Review
     public string Comment { get; set; }
     public int Rating { get; set; }
     public long Time { get; set; }
-    //public List<Comment> Comments { get; set; } = new();
-    public int Likes { get; set; }
-    public int Dislikes { get; set; }
 }

@@ -8,6 +8,5 @@
         public string Password { get; set; }
         public List<Review> Reviews { get; set; } = new();
         public List<Movie> Movies { get; set; } = new();
-        public List<Room> Rooms { get; set; } = new();
     }
 }
