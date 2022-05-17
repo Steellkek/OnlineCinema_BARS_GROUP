@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace OnlineCinema_BARS_GROUP.Migrations
 {
-    public partial class newIntial : Migration
+    public partial class LastestIntial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -61,8 +61,7 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                     Rating = table.Column<double>(type: "double precision", nullable: false),
                     ImagePath = table.Column<string>(type: "text", nullable: true),
                     FilmPath = table.Column<string>(type: "text", nullable: true),
-                    Duration = table.Column<TimeSpan>(type: "interval", nullable: true),
-                    UserId = table.Column<int>(type: "integer", nullable: true)
+                    Duration = table.Column<TimeSpan>(type: "interval", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -71,11 +70,6 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                         name: "FK_Movies_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Movies_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
                         principalColumn: "Id");
                 });
 
@@ -142,11 +136,6 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Movies_UserId",
-                table: "Movies",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Reviews_AuthorId",
                 table: "Reviews",
                 column: "AuthorId");
@@ -172,10 +161,10 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                 name: "Movies");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Categories");
         }
     }
 }

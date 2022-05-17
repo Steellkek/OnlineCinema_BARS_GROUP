@@ -12,8 +12,8 @@ using OnlineCinema_BARS_GROUP.Data;
 namespace OnlineCinema_BARS_GROUP.Migrations
 {
     [DbContext(typeof(CinemaContext))]
-    [Migration("20220517124910_LastIntial")]
-    partial class LastIntial
+    [Migration("20220517133325_LastestIntial")]
+    partial class LastestIntial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
