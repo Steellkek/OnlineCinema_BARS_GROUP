@@ -5,12 +5,7 @@ public class Movie
     public int Id {get; set;}
         
     public string Title { get; set; }
-        
-    /// <summary>
-    /// Описание для превью.
-    /// </summary>
-    public string? ShortDescription { get; set; }
-        
+    
     /// <summary>
     /// Описание.
     /// </summary>
@@ -42,8 +37,6 @@ public class Movie
     /// <summary>
     /// Количество просмотров.
     /// </summary>
-    public int Views { get; set; }
-        
     public List<Genre> Genres { get; set; } = new();
         
     /// <summary>

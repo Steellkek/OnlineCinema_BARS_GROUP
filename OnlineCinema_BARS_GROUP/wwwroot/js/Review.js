@@ -14,7 +14,6 @@ document.getElementById("review-add").onclick= async function () {
     }
     if((review!=="")&&(rate!=null)) {
         let userId;
-        console.log(sessionStorage.user);
         const response = await fetch("/api/User/" + sessionStorage.user, {
             method: "GET",
             headers: {
@@ -25,7 +24,6 @@ document.getElementById("review-add").onclick= async function () {
         if (response.ok===true){
             const user= await response.json();
             userId=user.id;
-            console.log(userId)
         }
         let Review = {
             id: uuidv4(),
@@ -35,7 +33,6 @@ document.getElementById("review-add").onclick= async function () {
             time: Math.floor(Date.now() / 1000),
             rating:parseInt(rate)
         }
-        console.log(Review)
         let response1 = await fetch('api/Review', {
             method: 'POST',
             headers: {
@@ -65,9 +62,7 @@ async function GetComments() {
     });
     if (response.ok === true) {
         const reviews = await response.json();
-        console.log(reviews);
         let htmlReviews='';
-        console.log(reviews.length)
         reviews.forEach((review)=>{
             if (review.author.userName === sessionStorage.user){
                 document.getElementById("Add-review").classList.add('hide')

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using OnlineCinema_BARS_GROUP.Data;
@@ -11,9 +12,10 @@ using OnlineCinema_BARS_GROUP.Data;
 namespace OnlineCinema_BARS_GROUP.Migrations
 {
     [DbContext(typeof(CinemaContext))]
-    partial class CinemaContextModelSnapshot : ModelSnapshot
+    [Migration("20220517124532_newIntial")]
+    partial class newIntial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -97,9 +99,14 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Movies");
                 });
@@ -181,6 +188,10 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                         .WithMany("Movies")
                         .HasForeignKey("CategoryId");
 
+                    b.HasOne("OnlineCinema_BARS_GROUP.Data.Models.User", null)
+                        .WithMany("Movies")
+                        .HasForeignKey("UserId");
+
                     b.Navigation("Category");
                 });
 
@@ -215,6 +226,8 @@ namespace OnlineCinema_BARS_GROUP.Migrations
 
             modelBuilder.Entity("OnlineCinema_BARS_GROUP.Data.Models.User", b =>
                 {
+                    b.Navigation("Movies");
+
                     b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618

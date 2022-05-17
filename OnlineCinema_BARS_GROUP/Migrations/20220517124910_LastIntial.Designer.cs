@@ -12,8 +12,8 @@ using OnlineCinema_BARS_GROUP.Data;
 namespace OnlineCinema_BARS_GROUP.Migrations
 {
     [DbContext(typeof(CinemaContext))]
-    [Migration("20220517105027_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220517124910_LastIntial")]
+    partial class LastIntial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -95,24 +95,13 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                     b.Property<double>("Rating")
                         .HasColumnType("double precision");
 
-                    b.Property<string>("ShortDescription")
-                        .HasColumnType("text");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Views")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Movies");
                 });
@@ -194,10 +183,6 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                         .WithMany("Movies")
                         .HasForeignKey("CategoryId");
 
-                    b.HasOne("OnlineCinema_BARS_GROUP.Data.Models.User", null)
-                        .WithMany("Movies")
-                        .HasForeignKey("UserId");
-
                     b.Navigation("Category");
                 });
 
@@ -232,8 +217,6 @@ namespace OnlineCinema_BARS_GROUP.Migrations
 
             modelBuilder.Entity("OnlineCinema_BARS_GROUP.Data.Models.User", b =>
                 {
-                    b.Navigation("Movies");
-
                     b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618

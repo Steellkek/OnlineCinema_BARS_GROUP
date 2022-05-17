@@ -62,32 +62,7 @@ namespace OnlineCinema_BARS_GROUP.Controllers
                     .Where(x => x.GenreId == moviesOptionsDto.GenreId)
                     .Select(x => x.Movie);
             }
-
-            /*(List<Movie> f = new List<Movie>();
-
-            foreach (var VARIABLE in filteredMovies)
-            {
-                foreach (var VARIABLE2 in VARIABLE.Genres)
-                {
-                    {
-                        if (moviesOptionsDto.GenreIds.Contains(VARIABLE2.Id))
-                        {
-                            f.Add(VARIABLE);
-                        }
-                    }
-                }
-            }
-
-            //var filteredMovies = _context.Movies.Where(x => x.CategoryId == categoryId).ToList();
-
-            var sortedBooks = moviesOptionsDto.SortOrder == SortOrder.Ascending
-                ? filteredMovies.OrderBy(x => x.Views)
-                : filteredMovies.OrderByDescending(x => x.Views);
             
-            var pagedMovies = await sortedBooks
-                .Skip((moviesOptionsDto.PageNumber - 1) * moviesOptionsDto.PageSize)
-                .Take(moviesOptionsDto.PageSize)
-                .ToListAsync();*/
             return new ActionResult<IEnumerable<Movie>>(filteredMovies);
         }
 

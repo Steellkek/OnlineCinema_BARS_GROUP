@@ -33,7 +33,6 @@ function renderFilterCategories(categories, genres) {
 //Вывод всех фильмов
 async function renderList(movies, categoryId = null) {
     let htmlCatalog = '';
-    //console.log(movies)
     movies.forEach((movie) => {
         let htmlCategory = ''
         movie.genres.forEach((genre) => {
@@ -60,7 +59,6 @@ async function renderList(movies, categoryId = null) {
 }
 
 async function getMoviesByCategory() {
-    console.log(7)
     let categorys=document.querySelectorAll('input[name="Category"]')
     let genres = document.querySelectorAll('input[name="Genre"]')
     let genreId
@@ -92,10 +90,9 @@ async function getMoviesByCategory() {
     }).catch(e => {
         console.error(e);
     });
-    console.log(JSON.stringify(moviesOptionsDto))
     // получаем данные
-    const mo = await response.json();
-    renderList(mo)
+    const movie = await response.json();
+    renderList(movie)
 }
 
 // Получить список фильмов.
@@ -113,7 +110,6 @@ async function getMovies() {
 
     // получаем данные
     const movies = await response.json();
-    console.log(movies)
     return movies;
 }
 
@@ -132,7 +128,6 @@ async function getCategories() {
 
     // получаем данные
     const categories = await response.json();
-    console.log(categories)
     return categories;
 }
 
@@ -157,7 +152,7 @@ async function getGenres() {
 
     // получаем данные
     const genres = await response.json();
-    console.log(genres)
+
     return genres;
 }
 
@@ -168,7 +163,7 @@ async function renderPage() {
         let categories = await getCategories();
         let genres = await getGenres();
         
-        console.log(categories)
+
         await renderList(movies);
         renderFilterCategories(categories, genres);
     }

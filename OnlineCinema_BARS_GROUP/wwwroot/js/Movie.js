@@ -8,7 +8,6 @@
     });
     if (response.ok === true) {
         const movie = await response.json();
-        console.log(movie)
         let htmlCategory = '';
         movie.genres.forEach((genre) => {
             htmlCategory += `${genre.name + ' '} `

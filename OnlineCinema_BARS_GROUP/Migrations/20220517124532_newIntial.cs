@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace OnlineCinema_BARS_GROUP.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class newIntial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -56,14 +56,12 @@ namespace OnlineCinema_BARS_GROUP.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Title = table.Column<string>(type: "text", nullable: false),
-                    ShortDescription = table.Column<string>(type: "text", nullable: true),
                     LongDescription = table.Column<string>(type: "text", nullable: true),
                     CategoryId = table.Column<Guid>(type: "uuid", nullable: true),
                     Rating = table.Column<double>(type: "double precision", nullable: false),
                     ImagePath = table.Column<string>(type: "text", nullable: true),
                     FilmPath = table.Column<string>(type: "text", nullable: true),
                     Duration = table.Column<TimeSpan>(type: "interval", nullable: true),
-                    Views = table.Column<int>(type: "integer", nullable: false),
                     UserId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
