@@ -26,5 +26,5 @@
 
 ## Требования для запуска приложения:
 1. Установить postresql, изменить строку подключения в файле ***OnlineCinema_BARS_GROUP\OnlineCinema_BARS_GROUP\appsettings.json***.
-2. Обновить бд с помощью команды **dotnet ef -p OnlineCinema_BARS_GROUP database update**.
+2. Обновить бд с помощью команды **"dotnet ef -p OnlineCinema_BARS_GROUP database update"**.
 3. Запустить проект.
