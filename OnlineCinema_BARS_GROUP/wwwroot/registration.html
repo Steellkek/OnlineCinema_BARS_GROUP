@@ -15,9 +15,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Все фильмы</a>
-                </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="registration.html">Регистрация</a>
                 </li>
@@ -33,13 +30,13 @@
             <h2>Регистрация</h2>
             <form name="userForm">
                 <label for="name">Имя:</label>
-                <input class="form-control" name="username" />
+                <input class="form-control" type="text" name="username" minlength="2" required/>
                 <label for="surname">Фамилия:</label>
-                <input class="form-control" name="surname" />
+                <input class="form-control" type="text" name="surname" minlength="1" required/>
                 <label for="password">Пароль:</label>
-                <input class="form-control" name="password" />
+                <input class="form-control" type="password" name="password" minlength="3" required/>
                 <p></p>
-                <button type="submit" id="submit" class="btn btn-primary">Зарегистрироваться</button>
+                <button type="submit" id="submit" class="btn btn-dark">Зарегистрироваться</button>
             </form>
         </div>
         <footer class="container">

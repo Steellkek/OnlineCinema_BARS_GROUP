@@ -17,9 +17,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Все фильмы <span class="sr-only">(current)</span></a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="registration.html">Регистрация</a>
                     </li>
@@ -35,9 +32,43 @@
     </header>
     <main>
         <h1>header залезает сюда:(</h1>
-        <h2>Список фильмов</h2>
-        <div id="movies"></div>
+        <div class="container">
+            <h2>Список фильмов</h2>
+            <div class="row">
+                <aside class="col-md-3">
+                    <div class="card border-dark">
+                        <article class="filter-group">
+                            <header class="card-header bg-dark">
+                                <h6 class="title text-white">Категория</h6>
+                            </header>
+                            <div class="filter-content collapse show" id="collapse_1" style="">
+                                <form>
+                                    <div class="card-body" id="filterCategories">
 
+                                    </div>
+                                </form>
+                            </div>
+                        </article>
+                        <article class="filter-group">
+                            <header class="card-header bg-dark">
+                                <h6 class="title text-white">Жанры</h6>
+                            </header>
+                            <div class="filter-content collapse show" id="collapse_2" style="">
+                                <div class="card-body" id="filterGenres">
+
+                                </div> <!-- card-body.// -->
+                            </div>
+                        </article>
+                        <article class="filter-group">
+                            <button class="btn btn-dark" onclick="getMoviesByCategory()">Найти</button>
+                        </article>
+                    </div>
+                </aside>
+                <main class="col-md-9">
+                    <div id="movies"></div>
+                </main>
+            </div>
+        </div>
         <footer class="container">
             <p class="float-right"><a href="#">Наверх</a></p>
             <p>© 2022 TeamBG, Inc.</p>

@@ -6,7 +6,7 @@ namespace OnlineCinema_BARS_GROUP.Data;
 public class CinemaContext : DbContext
 {
     public DbSet<AgeRestriction> AgeRestrictions { get; set; }
-    public DbSet<Category?> Categories { get; set; }
+    public DbSet<Category> Categories { get; set; }
     public DbSet<Comment> Comments { get; set; }
     public DbSet<Genre> Genres { get; set; }
     public DbSet<Movie> Movies { get; set; }
